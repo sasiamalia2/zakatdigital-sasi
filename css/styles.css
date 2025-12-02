@@ -1,0 +1,72 @@
+/* assets/css/style.css */
+
+/* 1. TIPOGRAFI MODERN */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    background-color: #f0f2f5; /* Latar belakang lembut */
+}
+
+/* 2. SKEMA WARNA DAN GRADIENT */
+/* Primary: Deep Blue */
+.bg-primary, .btn-primary {
+    background: linear-gradient(135deg, #0d47a1, #1976d2) !important; 
+    border-color: #0d47a1 !important;
+}
+.btn-outline-primary {
+    color: #0d47a1;
+    border-color: #0d47a1;
+}
+/* Success: Green */
+.btn-success {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a) !important; 
+    border: none !important;
+    transition: all 0.3s ease;
+}
+.btn-success:hover {
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+    transform: translateY(-2px);
+}
+/* Warning: Yellow */
+.btn-warning {
+    background: #ffb300 !important;
+    border-color: #ffb300 !important;
+    color: #333 !important;
+    font-weight: 600;
+}
+
+/* 3. SENTUHAN MODERN PADA CARD/KONTEN (DITINGKATKAN) */
+.card, .calculator-box, .alert-success {
+    border-radius: 20px; /* Sudut lebih membulat (sedikit lebih besar) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Shadow lebih menonjol dan lembut */
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2); /* Efek hover yang lebih dramatis */
+}
+
+/* PENTING: MENAMBAH PADDING PADA BOX KALKULATOR */
+.calculator-box {
+    background: #ffffff;
+    padding: 50px; /* Ditingkatkan dari 40px ke 50px */
+}
+
+/* PENTING: MENAMBAH PADDING PADA CARD DONASI */
+/* Bootstrap class 'p-4' sudah ada, tapi kita bisa memastikan jarak isinya luas */
+#donasi-form .card {
+    padding: 3rem !important; /* Ditingkatkan, memastikan ruang bernapas */
+}
+
+
+/* GAYA KHUSUS KALKULATOR INPUT */
+#kalkulator-zakat .form-control {
+    padding: 1.5rem 1rem; /* Membuat input field lebih tinggi dan elegan */
+}
+
+/* PENGATURAN TEKS HERO */
+.text-shadow-lg {
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}

@@ -11,12 +11,12 @@
 </head>
 <body>
 
-    <header class="sticky-top shadow-sm">
+    <header class="sticky-top shadow-lg" id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.html">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="30" height="30" class="me-2"> 
-                    Zakat Digital
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="40" height="40" class="me-2 rounded-circle border border-2 border-white"> 
+                    <span>Zakat Digital</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -37,40 +37,50 @@
     </header>
 
     <main>
-        <section id="hero" class="py-5 bg-primary text-white text-center" style="min-height: 400px; background: url('assets/images/hero-bg.jpg') no-repeat center center/cover;">
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1">
-                        <h1 class="display-3 fw-bold mb-3 text-shadow-lg">Salurkan Zakat, Sucikan Harta, Raih Berkah</h1>
-                        <p class="lead mb-4">Platform terpercaya untuk Zakat, Infaq, dan Sedekah (ZIS). Setiap rupiah disalurkan transparan untuk pemberdayaan umat.</p>
-                        <a href="#kalkulator-zakat" class="btn btn-warning btn-lg me-3 mt-3">Hitung Kewajiban Zakat</a>
-                        <a href="donasi-form.html" class="btn btn-outline-light btn-lg mt-3">Bayar Zakat/Infaq</a>
+        <section id="hero" class="hero-section py-5 py-md-7 position-relative overflow-hidden">
+            <div class="hero-bg-animation"></div>
+            <div class="container position-relative z-2">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6 order-lg-2 d-flex justify-content-center">
+                        <div class="hero-image-container">
+                            <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Ilustrasi Donasi Digital" class="img-fluid rounded-4 shadow-lg hero-image" style="max-height: 450px; object-fit: cover;">
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                    <div class="col-lg-6 order-lg-1 text-center text-lg-start">
+                        <div class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2">
+                            <i class="fas fa-leaf me-1"></i> Platform ZIS Terpercaya
+                        </div>
+                        <h1 class="display-3 fw-bold text-primary mb-3 lh-1">Kemudahan Zakat di Genggaman Anda</h1>
+                        <p class="fs-5 text-muted mb-4 lh-lg">Salurkan Zakat, Infaq, dan Sedekah (ZIS) secara digital, amanah, dan transparan. Bantu jutaan "mustahik" menuju kemandirian dengan platform kami yang terpercaya.</p>
+                        
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mb-5">
+                            <a href="donasi-form.html" class="btn btn-primary btn-lg fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                                <i class="fas fa-hand-holding-usd"></i> Bayar Zakat Sekarang
+                            </a>
+                            <a href="#kalkulator-zakat" class="btn btn-outline-primary btn-lg fw-semibold d-inline-flex align-items-center justify-content-center gap-2">
+                                <i class="fas fa-calculator"></i> Hitung Zakat
+                            </a>
+                        </div>
 
-        <section id="kalkulator-zakat" class="py-5 bg-light">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-7 col-lg-6">
-                        <div class="calculator-box shadow-lg">
-                            <h2 class="text-primary text-center mb-4"><i class="fas fa-calculator me-2"></i> Kalkulator Zakat Penghasilan</h2>
-                            
-                            <div class="mb-3">
-                                <label for="penghasilan" class="form-label fw-bold">Penghasilan Bulanan Bersih (Rp)</label>
-                                <input type="number" id="penghasilan" class="form-control form-control-lg" placeholder="Contoh: 10000000">
+                        <!-- Quick Stats -->
+                        <div class="row g-3 pt-4 border-top">
+                            <div class="col-6 col-md-4">
+                                <div class="text-center">
+                                    <h4 class="text-primary fw-bold mb-1">10K+</h4>
+                                    <p class="text-muted small mb-0">Pengguna Aktif</p>
+                                </div>
                             </div>
-
-                            <p class="text-muted small">
-                                Nisab Bulanan Saat Ini: <span id="nisab-value" class="fw-bold">Rp 7.083.333</span>.
-                            </p>
-
-                            <div id="hasil-zakat" class="text-center">
-                                <p class="text-secondary mt-3">Masukkan penghasilan bulanan Anda.</p>
+                            <div class="col-6 col-md-4">
+                                <div class="text-center">
+                                    <h4 class="text-success fw-bold mb-1">Rp 5M+</h4>
+                                    <p class="text-muted small mb-0">Dana Tersalur</p>
+                                </div>
                             </div>
-                            <div class="d-grid gap-2 mt-4">
-                                <a href="donasi-form.html" class="btn btn-primary btn-lg">Bayar Zakat Nominal Ini</a>
+                            <div class="col-6 col-md-4">
+                                <div class="text-center">
+                                    <h4 class="text-info fw-bold mb-1">100%</h4>
+                                    <p class="text-muted small mb-0">Transparan</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,14 +88,188 @@
             </div>
         </section>
 
-        <section id="ajakan-program" class="py-5 bg-primary text-white text-center">
+        <section id="fitur" class="py-5 py-md-7 bg-light">
             <div class="container">
-                <h2>Lihat Dampak Zakat Anda</h2>
-                <p class="lead">Dana yang Anda salurkan memberdayakan umat melalui program Pendidikan, Kesehatan, dan Ekonomi.</p>
-                <a href="programs.html" class="btn btn-warning btn-lg mt-3">Lihat Semua Program Kami</a>
+                <div class="text-center mb-5 mb-md-7">
+                    <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Keunggulan Kami</span>
+                    <h2 class="display-5 fw-bold text-dark mb-3">Mengapa Memilih Zakat Digital?</h2>
+                    <p class="fs-5 text-muted">Platform terpercaya dengan fitur lengkap untuk memudahkan penyaluran ZIS Anda</p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="feature-card p-5 rounded-4 h-100 border-0 shadow-sm hover-lift">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-shield-alt fa-3x text-success"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Amanah & Legal</h5>
+                            <p class="text-muted">Tersalurkan kepada 8 asnaf yang berhak, sesuai syariat Islam dan regulasi pemerintah.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="feature-card p-5 rounded-4 h-100 border-0 shadow-sm hover-lift">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-bolt fa-3x text-info"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Proses Instan</h5>
+                            <p class="text-muted">Pembayaran dalam hitungan detik, didukung berbagai metode pembayaran digital modern.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="feature-card p-5 rounded-4 h-100 border-0 shadow-sm hover-lift">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-chart-line fa-3x text-warning"></i>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-2">Transparan 100%</h5>
+                            <p class="text-muted">Akses riwayat lengkap dan laporan penyaluran dana secara real-time dan detail.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <section id="kalkulator-zakat" class="py-5 py-md-7 bg-white">
+            <div class="container">
+                <div class="text-center mb-5 mb-md-7">
+                    <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Hitung Zakat</span>
+                    <h2 class="display-5 fw-bold text-dark mb-3"><i class="fas fa-calculator me-2"></i> Kalkulator Zakat Penghasilan</h2>
+                    <p class="fs-5 text-muted">Hitung kewajiban zakat penghasilan Anda dengan mudah berdasarkan Nisab terkini</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="calculator-card card p-5 shadow-lg border-0 rounded-4">
+                            <!-- Info Alert -->
+                            <div class="alert alert-info bg-light border-0 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-info-circle text-info me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="mb-1">Nisab Bulanan Saat Ini</h6>
+                                        <p class="mb-0 text-muted small">Rp <span id="nisab-value" class="fw-bold text-primary">X.XXX.XXX</span> (Standar emas 87.48g)</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Input Section -->
+                            <div class="mb-4">
+                                <label for="penghasilan" class="form-label fw-bold text-dark mb-2">Penghasilan Bulanan Bersih</label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-light border-end-0">Rp</span>
+                                    <input type="text" class="form-control border-start-0" id="penghasilan" placeholder="Masukkan jumlah (contoh: 10000000)" required>
+                                </div>
+                                <small class="text-muted mt-2 d-block">Masukkan penghasilan bulanan bersih Anda (setelah potongan pajak)</small>
+                            </div>
+                            
+                            <!-- Result Section -->
+                            <div id="hasil-zakat" class="mb-4 min-height-200">
+                                <div class="text-center py-5">
+                                    <i class="fas fa-calculator text-muted mb-3" style="font-size: 2rem;"></i>
+                                    <p class="text-muted">Masukkan penghasilan Anda dan klik tombol hitung untuk melihat hasil</p>
+                                </div>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-grid gap-2 gap-sm-3 d-sm-flex">
+                                <button id="hitungZakatButton" type="button" class="btn btn-primary btn-lg fw-semibold flex-grow-1">
+                                    <i class="fas fa-calculator me-2"></i> Hitung Zakat Sekarang
+                                </button>
+                                <button type="reset" onclick="resetCalculator()" class="btn btn-outline-secondary btn-lg fw-semibold d-none d-sm-block">
+                                    <i class="fas fa-redo me-2"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Help Section -->
+                        <div class="mt-5 pt-4 border-top">
+                            <div class="row row-cols-1 row-cols-md-2 g-4">
+                                <div class="col">
+                                    <div class="d-flex gap-3">
+                                        <div>
+                                            <i class="fas fa-question-circle text-primary fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Bagaimana cara menghitung?</h6>
+                                            <p class="text-muted small mb-0">Zakat = Penghasilan × 2.5% (jika ≥ nisab)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="d-flex gap-3">
+                                        <div>
+                                            <i class="fas fa-users text-success fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">8 Golongan Penerima</h6>
+                                            <p class="text-muted small mb-0">Fakir, miskin, amil, muallaf, budak, gharimin, fisabilillah, dan ibnu sabil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="program-singkat" class="py-5 py-md-7 bg-light">
+            <div class="container">
+                <div class="text-center mb-5 mb-md-7">
+                    <span class="badge bg-success bg-opacity-10 text-success mb-3">Program Kami</span>
+                    <h2 class="display-5 fw-bold text-dark mb-3">4 Pilar Penyaluran Zakat</h2>
+                    <p class="fs-5 text-muted">Kami menyalurkan dana zakat Anda melalui 4 program unggulan yang berdampak</p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+                    <div class="col">
+                        <div class="program-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                            <div class="program-header bg-primary bg-opacity-10 p-4 text-center">
+                                <h3 class="mb-0" style="font-size: 2.5rem;">🎓</h3>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold text-primary mb-2">Zakat Cerdas</h5>
+                                <p class="text-muted small mb-0">Beasiswa & pendidikan untuk anak kurang mampu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="program-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                            <div class="program-header bg-danger bg-opacity-10 p-4 text-center">
+                                <h3 class="mb-0" style="font-size: 2.5rem;">🚑</h3>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold text-danger mb-2">Zakat Sehat</h5>
+                                <p class="text-muted small mb-0">Bantuan kesehatan & pengobatan gratis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="program-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                            <div class="program-header bg-warning bg-opacity-10 p-4 text-center">
+                                <h3 class="mb-0" style="font-size: 2.5rem;">💼</h3>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold text-warning mb-2">Zakat Mandiri</h5>
+                                <p class="text-muted small mb-0">Modal usaha & pemberdayaan ekonomi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="program-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                            <div class="program-header bg-info bg-opacity-10 p-4 text-center">
+                                <h3 class="mb-0" style="font-size: 2.5rem;">🤝</h3>
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold text-info mb-2">Zakat Peduli</h5>
+                                <p class="text-muted small mb-0">Bantuan bencana & kebutuhan dasar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="programs.html" class="btn btn-primary btn-lg fw-semibold">
+                        <i class="fas fa-arrow-right me-2"></i> Pelajari Lebih Lanjut tentang Program Kami
+                    </a>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <footer class="bg-dark text-white pt-5 pb-3">
@@ -128,6 +312,59 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/calculator.js"></script>
-    <script src="assets/js/donasi.js"></script> 
+    
+    <script>
+        // Helper function untuk reset calculator
+        function resetCalculator() {
+            document.getElementById('penghasilan').value = '';
+            document.getElementById('hasil-zakat').innerHTML = '<div class="text-center py-5"><i class="fas fa-calculator text-muted mb-3" style="font-size: 2rem;"></i><p class="text-muted">Masukkan penghasilan Anda dan klik tombol hitung untuk melihat hasil</p></div>';
+        }
+
+        // Format Rupiah untuk input di halaman index
+        document.addEventListener('DOMContentLoaded', () => {
+            const penghasilanInput = document.getElementById('penghasilan');
+            const hitungButton = document.getElementById('hitungZakatButton');
+            const hasilDiv = document.getElementById('hasil-zakat');
+            
+            if (penghasilanInput) {
+                penghasilanInput.addEventListener('input', e => {
+                    const raw = e.target.value.replace(/\D/g, '');
+                    e.target.value = raw ? parseInt(raw).toLocaleString('id-ID') : "";
+                    // Reset hasil saat user mengetik
+                    if (hasilDiv) {
+                        hasilDiv.innerHTML = '<div class="text-center py-5"><i class="fas fa-calculator text-muted mb-3" style="font-size: 2rem;"></i><p class="text-muted">Masukkan penghasilan Anda dan klik tombol hitung untuk melihat hasil</p></div>';
+                    }
+                });
+            }
+
+            // Smooth scroll untuk navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll effect untuk header
+            let lastScrollTop = 0;
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 100) {
+                    header.classList.add('shadow-lg');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.add('shadow-sm');
+                    header.classList.remove('shadow-lg');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            });
+        });
+    </script> 
 </body>
 </html>

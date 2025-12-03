@@ -11,11 +11,11 @@
 </head>
 <body>
 
-    <header class="sticky-top shadow-sm">
+    <header class="sticky-top" id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="index.html">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="30" height="30" class="me-2"> 
+                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="40" height="40" class="me-2 rounded-circle border border-2 border-white" style="box-shadow: 0 2px 8px rgba(0,0,0,0.15);"> 
                     Zakat Digital
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,101 +36,241 @@
         </nav>
     </header>
 
-    <main class="container my-5">
-        <div class="row text-center">
-            <div class="col-12">
-                <h1 class="mb-3 text-success fw-bold">Program Penyaluran Zakat Unggulan</h1>
-                <p class="lead mb-5 text-muted">Dana Zakat, Infaq, dan Sedekah (ZIS) Anda disalurkan secara amanah melalui empat pilar utama.</p>
+    <main>
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="bg-light py-3 border-bottom">
+            <div class="container">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Program</li>
+                </ol>
             </div>
-        </div>
+        </nav>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr (2).png" class="card-img-top" alt="Program Pendidikan" style="height: 180px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary fw-bold">Zakat Cerdas 🎓</h5>
-                        <p class="card-text text-muted small">Penyaluran beasiswa, bantuan sekolah, dan pengembangan sarana pendidikan bagi anak yatim dan dhuafa.</p>
-                        <a href="donasi-form.html" class="btn btn-outline-primary w-100 mt-2">Salurkan Sekarang</a>
+        <section class="container py-5">
+            <!-- Hero Section -->
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <span class="badge bg-primary-gradient rounded-pill px-3 py-2 mb-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">✨ Program Unggulan</span>
+                    <h1 class="display-4 fw-bold mb-3 text-dark">Program Penyaluran Zakat Terpercaya</h1>
+                    <p class="lead text-muted mb-0" style="max-width: 600px; margin-left: auto; margin-right: auto;">Dana Zakat, Infaq, dan Sedekah (ZIS) Anda disalurkan secara amanah melalui empat pilar utama yang berdampak langsung kepada masyarakat yang membutuhkan.</p>
+                    <div class="mt-4 border-bottom-gradient" style="width: 80px; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2); margin-left: auto; margin-right: auto;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <!-- Program Cards -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5" id="programCards">
+                
+                <!-- Zakat Cerdas -->
+                <div class="col">
+                    <div class="program-card h-100 program-cerdas">
+                        <div class="program-card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr (2).png" alt="Program Pendidikan" style="height: 160px; object-fit: cover; width: 100%;">
+                            <div class="program-icon-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold" style="color: #667eea;">Zakat Cerdas 🎓</h5>
+                            <p class="card-text text-muted small flex-grow-1">Penyaluran beasiswa, bantuan sekolah, dan pengembangan sarana pendidikan bagi anak yatim dan dhuafa.</p>
+                            <div class="program-benefits small mb-3">
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #667eea; margin-right: 8px;"></i> Beasiswa penuh & parsial</div>
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #667eea; margin-right: 8px;"></i> Bantuan perlengkapan sekolah</div>
+                                <div class="d-flex align-items-center"><i class="fas fa-check" style="color: #667eea; margin-right: 8px;"></i> Pengembangan sarana pendidikan</div>
+                            </div>
+                            <a href="donasi-form.html?jenis=Zakat Pendidikan" class="btn btn-primary w-100 mt-auto">Salurkan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zakat Sehat -->
+                <div class="col">
+                    <div class="program-card h-100 program-sehat">
+                        <div class="program-card-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr (3).png" alt="Program Kesehatan" style="height: 160px; object-fit: cover; width: 100%;">
+                            <div class="program-icon-circle" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold" style="color: #f5576c;">Zakat Sehat 🚑</h5>
+                            <p class="card-text text-muted small flex-grow-1">Bantuan biaya pengobatan, layanan kesehatan gratis, dan pengadaan alat bantu bagi masyarakat kurang mampu.</p>
+                            <div class="program-benefits small mb-3">
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #f5576c; margin-right: 8px;"></i> Subsidi pemeriksaan kesehatan</div>
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #f5576c; margin-right: 8px;"></i> Bantuan operasi & pengobatan</div>
+                                <div class="d-flex align-items-center"><i class="fas fa-check" style="color: #f5576c; margin-right: 8px;"></i> Alat kesehatan & obat-obatan</div>
+                            </div>
+                            <a href="donasi-form.html?jenis=Zakat Kesehatan" class="btn btn-danger w-100 mt-auto">Salurkan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Zakat Mandiri -->
+                <div class="col">
+                    <div class="program-card h-100 program-mandiri">
+                        <div class="program-card-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <img src="assets/images/Gemini_Generated_Image_ffsxmuffsxmuffsx.png" alt="Program Ekonomi" style="height: 160px; object-fit: cover; width: 100%;">
+                            <div class="program-icon-circle" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold" style="color: #f59e0b;">Zakat Mandiri 💼</h5>
+                            <p class="card-text text-muted small flex-grow-1">Program modal usaha mikro, pelatihan keterampilan, dan pendampingan bisnis untuk pemberdayaan ekonomi mustahik.</p>
+                            <div class="program-benefits small mb-3">
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #f59e0b; margin-right: 8px;"></i> Modal usaha mikro tanpa bunga</div>
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #f59e0b; margin-right: 8px;"></i> Pelatihan & mentoring bisnis</div>
+                                <div class="d-flex align-items-center"><i class="fas fa-check" style="color: #f59e0b; margin-right: 8px;"></i> Akses pasar & jaringan usaha</div>
+                            </div>
+                            <a href="donasi-form.html?jenis=Zakat Pemberdayaan" class="btn btn-warning w-100 mt-auto text-dark">Salurkan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zakat Peduli -->
+                <div class="col">
+                    <div class="program-card h-100 program-peduli">
+                        <div class="program-card-header" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                            <img src="assets/images/Gemini_Generated_Image_j0xqpej0xqpej0xq.png" alt="Program Sosial" style="height: 160px; object-fit: cover; width: 100%;">
+                            <div class="program-icon-circle" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold" style="color: #0891b2;">Zakat Peduli 🤝</h5>
+                            <p class="card-text text-muted small flex-grow-1">Bantuan bencana alam, kebutuhan dasar, dan pembangunan fasilitas umum yang dibutuhkan oleh masyarakat luas.</p>
+                            <div class="program-benefits small mb-3">
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #0891b2; margin-right: 8px;"></i> Bantuan darurat bencana</div>
+                                <div class="d-flex align-items-center mb-2"><i class="fas fa-check" style="color: #0891b2; margin-right: 8px;"></i> Pangan & kebutuhan pokok</div>
+                                <div class="d-flex align-items-center"><i class="fas fa-check" style="color: #0891b2; margin-right: 8px;"></i> Pembangunan fasilitas umum</div>
+                            </div>
+                            <a href="donasi-form.html?jenis=Zakat Sosial" class="btn btn-info w-100 mt-auto">Salurkan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Program Statistics -->
+            <div class="row mt-5 pt-5 border-top">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="fw-bold mb-4">Dampak Program Kami</h2>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" style="color: #667eea;"><i class="fas fa-graduation-cap me-2"></i>25K+</div>
+                        <div class="stat-label">Siswa Terbantu</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" style="color: #f5576c;"><i class="fas fa-heartbeat me-2"></i>50K+</div>
+                        <div class="stat-label">Pasien Disembuhkan</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" style="color: #f59e0b;"><i class="fas fa-briefcase me-2"></i>10K+</div>
+                        <div class="stat-label">Pengusaha Mandiri</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="stat-card text-center">
+                        <div class="stat-number" style="color: #0891b2;"><i class="fas fa-hands-helping me-2"></i>100K+</div>
+                        <div class="stat-label">Keluarga Sejahtera</div>
                     </div>
                 </div>
             </div>
-
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr (3).png" class="card-img-top" alt="Program Kesehatan" style="height: 180px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger fw-bold">Zakat Sehat 🚑</h5>
-                        <p class="card-text text-muted small">Bantuan biaya pengobatan, layanan kesehatan gratis, dan pengadaan alat bantu bagi masyarakat kurang mampu.</p>
-                        <a href="donasi-form.html" class="btn btn-outline-danger w-100 mt-2">Salurkan Sekarang</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="assets/images/Gemini_Generated_Image_ffsxmuffsxmuffsx.png" class="card-img-top" alt="Program Ekonomi" style="height: 180px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-warning fw-bold">Zakat Mandiri 💼</h5>
-                        <p class="card-text text-muted small">Program modal usaha mikro, pelatihan keterampilan, dan pendampingan bisnis untuk pemberdayaan ekonomi *mustahik*.</p>
-                        <a href="donasi-form.html" class="btn btn-outline-warning w-100 mt-2">Salurkan Sekarang</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="assets/images/Gemini_Generated_Image_j0xqpej0xqpej0xq.png" class="card-img-top" alt="Program Sosial" style="height: 180px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-info fw-bold">Zakat Peduli 🤝</h5>
-                        <p class="card-text text-muted small">Bantuan bencana alam, kebutuhan dasar, dan pembangunan fasilitas umum yang dibutuhkan oleh masyarakat luas.</p>
-                        <a href="donasi-form.html" class="btn btn-outline-info w-100 mt-2">Salurkan Sekarang</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </main>
+        </section>
 
     <footer class="bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Zakat Digital</h5>
-                    <p class="text-muted">Platform penyaluran ZIS yang profesional, amanah, dan berbasis teknologi.</p>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Zakat Digital</h5>
+                    <p class="text-muted small">Platform penyaluran ZIS yang profesional, amanah, dan berbasis teknologi untuk kemajuan bersama.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
                 <div class="col-md-2 mb-4">
-                    <h6>Navigasi</h6>
+                    <h6 class="fw-bold mb-3">Navigasi</h6>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="programs.html">Program</a></li>
-                        <li><a href="about.html">Tentang Kami</a></li>
-                        <li><a href="history.html">Riwayat</a></li>
+                        <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="programs.html" class="text-muted text-decoration-none">Program</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-muted text-decoration-none">Tentang Kami</a></li>
+                        <li><a href="history.html" class="text-muted text-decoration-none">Riwayat</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <h6>Kontak Kami</h6>
-                    <ul class="list-unstyled text-muted">
-                        <li>Jl. Digital No. 10, Jakarta</li>
-                        <li>Email: info@zakatdigital.com</li>
-                        <li>Telp: (021) 1234 5678</li>
+                    <h6 class="fw-bold mb-3">Kontak Kami</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Jl. Digital No. 10, Jakarta</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i><a href="mailto:info@zakatdigital.com" class="text-muted">info@zakatdigital.com</a></li>
+                        <li><i class="fas fa-phone me-2"></i><a href="tel:+621234567890" class="text-muted">(021) 1234 5678</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h6>Legal</h6>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Kebijakan Privasi</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
             <div class="text-center border-top pt-3 mt-4">
-                <p class="mb-0 text-muted">&copy; 2024 Zakat Digital. Dikelola dengan Amanah.</p>
+                <p class="mb-0 text-muted small">&copy; 2024 Zakat Digital. Dikelola dengan Amanah.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Header shadow on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate program cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>

@@ -37,13 +37,88 @@
 
     <main class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <h1 class="text-center text-primary mb-5 fw-bold"><i class="fas fa-history me-2"></i> Riwayat Transaksi Zakat & Infaq Anda</h1>
-                
+            <div class="col-lg-12">
+                <!-- Header Section -->
+                <div class="mb-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-3">
+                        <div>
+                            <h1 class="text-primary mb-1 fw-bold"><i class="fas fa-history me-2"></i> Riwayat Transaksi Zakat & Infaq</h1>
+                            <p class="text-muted mb-0">Pantau semua transaksi donasi Anda</p>
+                        </div>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button id="exportBtn" class="btn btn-outline-secondary btn-sm d-none" onclick="exportHistory()">
+                                <i class="fas fa-download me-1"></i> Export
+                            </button>
+                            <button id="clearHistoryBtn" class="btn btn-sm btn-danger d-none" onclick="clearHistory()">
+                                <i class="fas fa-trash me-1"></i> Hapus Semua
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Section -->
+                    <div id="statsSection" class="d-none">
+                        <div class="row row-cols-1 row-cols-md-3 gap-3 mb-4">
+                            <div class="col">
+                                <div class="card shadow-sm border-0 h-100">
+                                    <div class="card-body text-center">
+                                        <p class="text-muted mb-1">Total Transaksi</p>
+                                        <h3 class="text-primary fw-bold mb-0"><span id="totalTransactions">0</span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm border-0 h-100">
+                                    <div class="card-body text-center">
+                                        <p class="text-muted mb-1">Total Donasi</p>
+                                        <h3 class="text-success fw-bold mb-0">Rp <span id="totalAmount">0</span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm border-0 h-100">
+                                    <div class="card-body text-center">
+                                        <p class="text-muted mb-1">Rata-rata Donasi</p>
+                                        <h3 class="text-info fw-bold mb-0">Rp <span id="averageAmount">0</span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters Section -->
+                <div id="filtersSection" class="card mb-4 d-none">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Filter Jenis Donasi</label>
+                                <select id="filterType" class="form-select" onchange="filterHistory()">
+                                    <option value="">Semua Jenis</option>
+                                    <option value="Zakat Penghasilan">Zakat Penghasilan</option>
+                                    <option value="Zakat Maal">Zakat Maal</option>
+                                    <option value="Infaq/Sedekah">Infaq/Sedekah</option>
+                                    <option value="Fidyah">Fidyah</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Cari Nama/Email</label>
+                                <input type="text" id="searchInput" class="form-control" placeholder="Ketik nama atau email..." onkeyup="filterHistory()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Container -->
                 <div id="history-container">
                     <div class="alert alert-info text-center shadow-sm">
-                        <p class="mb-0">Riwayat transaksi Anda akan muncul di sini setelah Anda melakukan pembayaran (simulasi) melalui halaman Home.</p>
-                        <a href="donasi-form.html" class="btn btn-info btn-sm mt-3">Bayar Zakat Sekarang</a>
+                        <div class="mb-3">
+                            <i class="fas fa-inbox fa-3x text-info mb-3"></i>
+                        </div>
+                        <h5 class="mb-2">Belum Ada Riwayat Transaksi</h5>
+                        <p class="mb-3">Riwayat transaksi Anda akan muncul di sini setelah Anda melakukan pembayaran zakat atau infaq.</p>
+                        <a href="donasi-form.html" class="btn btn-info">
+                            <i class="fas fa-hand-holding-usd me-2"></i> Mulai Donasi Sekarang
+                        </a>
                     </div>
                 </div>
                 
@@ -52,13 +127,245 @@
 
     </main>
 
-    <footer class="bg-dark text-white pt-5 pb-3">... (Isi footer sama) ...</footer>
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Zakat Digital. Semua hak dilindungi.</p>
+            <p>
+                <a href="index.html" class="text-white me-3">Home</a>
+                <a href="donasi-form.html" class="text-white me-3">Donasi</a>
+                <a href="programs.html" class="text-white me-3">Program</a>
+                <a href="about.html" class="text-white me-3">Tentang Kami</a>
+                <a href="history.html" class="text-white">Riwayat</a>
+            </p>
+        </div>
+    </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/donasi.js"></script> 
+<script src="assets/js/donasi.js"></script>
 <script>
-    // Memastikan fungsi displayHistory() dipanggil saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', displayHistory);
+    let allHistory = []; // Store all history for filtering
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadAndDisplayHistory();
+        updateStatistics();
+        setupEventListeners();
+    });
+
+    function loadAndDisplayHistory() {
+        allHistory = JSON.parse(localStorage.getItem('zakatHistory')) || [];
+        
+        // Show/hide buttons and sections based on data
+        const clearBtn = document.getElementById('clearHistoryBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const statsSection = document.getElementById('statsSection');
+        const filtersSection = document.getElementById('filtersSection');
+
+        if (allHistory.length > 0) {
+            if (clearBtn) clearBtn.classList.remove('d-none');
+            if (exportBtn) exportBtn.classList.remove('d-none');
+            if (statsSection) statsSection.classList.remove('d-none');
+            if (filtersSection) filtersSection.classList.remove('d-none');
+            renderHistory(allHistory);
+        } else {
+            if (clearBtn) clearBtn.classList.add('d-none');
+            if (exportBtn) exportBtn.classList.add('d-none');
+            if (statsSection) statsSection.classList.add('d-none');
+            if (filtersSection) filtersSection.classList.add('d-none');
+        }
+    }
+
+    function renderHistory(historyData) {
+        const container = document.getElementById('history-container');
+        
+        if (historyData.length === 0) {
+            container.innerHTML = `
+                <div class="alert alert-info text-center shadow-sm">
+                    <i class="fas fa-search fa-3x text-info mb-3"></i>
+                    <h5 class="mb-2">Tidak Ada Data yang Cocok</h5>
+                    <p>Coba ubah filter atau cari dengan kata kunci lain.</p>
+                </div>
+            `;
+            return;
+        }
+
+        let html = '<div class="row g-3">';
+
+        historyData.forEach((item, index) => {
+            const nominalFormatted = item.nominal.toLocaleString('id-ID');
+            
+            // Determine badge color based on type
+            let badgeClass = 'bg-primary';
+            if (item.jenis === 'Infaq/Sedekah') badgeClass = 'bg-warning text-dark';
+            else if (item.jenis === 'Zakat Maal') badgeClass = 'bg-success';
+            else if (item.jenis === 'Fidyah') badgeClass = 'bg-danger';
+
+            html += `
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 overflow-hidden hover-card">
+                        <div class="card-header bg-light border-0">
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <div>
+                                    <span class="badge ${badgeClass} mb-2 d-inline-block">${item.jenis}</span>
+                                    <p class="text-muted small mb-0"><i class="far fa-calendar-alt me-1"></i> ${item.tanggal}</p>
+                                </div>
+                                <span class="badge bg-success">Berhasil</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <p class="text-muted small mb-1">Nominal Donasi</p>
+                                <h5 class="text-success fw-bold mb-0">Rp ${nominalFormatted}</h5>
+                            </div>
+                            
+                            <hr class="my-3">
+                            
+                            <div class="mb-2">
+                                <p class="text-muted small mb-1">Nama Donatur</p>
+                                <p class="mb-0 fw-semibold">${item.nama}</p>
+                            </div>
+                            
+                            <div>
+                                <p class="text-muted small mb-1">Kontak</p>
+                                <p class="mb-0 small text-break">${item.emailhp}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-top">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary flex-grow-1" onclick="copyToClipboard('${item.emailhp}')">
+                                    <i class="fas fa-copy me-1"></i> Copy
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="deleteTransaction(${item.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function updateStatistics() {
+        if (allHistory.length === 0) return;
+
+        const totalTransactions = allHistory.length;
+        const totalAmount = allHistory.reduce((sum, item) => sum + item.nominal, 0);
+        const averageAmount = Math.round(totalAmount / totalTransactions);
+
+        document.getElementById('totalTransactions').textContent = totalTransactions;
+        document.getElementById('totalAmount').textContent = totalAmount.toLocaleString('id-ID');
+        document.getElementById('averageAmount').textContent = averageAmount.toLocaleString('id-ID');
+    }
+
+    function filterHistory() {
+        const filterType = document.getElementById('filterType').value;
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        const filtered = allHistory.filter(item => {
+            const matchType = !filterType || item.jenis === filterType;
+            const matchSearch = !searchInput || 
+                item.nama.toLowerCase().includes(searchInput) || 
+                item.emailhp.toLowerCase().includes(searchInput);
+            return matchType && matchSearch;
+        });
+
+        renderHistory(filtered);
+    }
+
+    function deleteTransaction(id) {
+        if (confirm('Hapus transaksi ini?')) {
+            allHistory = allHistory.filter(item => item.id !== id);
+            localStorage.setItem('zakatHistory', JSON.stringify(allHistory));
+            loadAndDisplayHistory();
+            updateStatistics();
+            showNotification('Transaksi berhasil dihapus', 'success');
+        }
+    }
+
+    function clearHistory() {
+        if (confirm('Apakah Anda yakin ingin menghapus SEMUA riwayat transaksi? Tindakan ini tidak dapat dibatalkan.')) {
+            localStorage.removeItem('zakatHistory');
+            allHistory = [];
+            loadAndDisplayHistory();
+            showNotification('Semua riwayat transaksi telah dihapus', 'warning');
+        }
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showNotification('Kontak disalin ke clipboard', 'info');
+        });
+    }
+
+    function exportHistory() {
+        if (allHistory.length === 0) {
+            alert('Tidak ada data untuk diexport');
+            return;
+        }
+
+        // Create CSV
+        let csv = 'Tanggal,Jenis Donasi,Nominal,Nama Donatur,Kontak,Status\n';
+        allHistory.forEach(item => {
+            csv += `"${item.tanggal}","${item.jenis}","${item.nominal}","${item.nama}","${item.emailhp}","${item.status}"\n`;
+        });
+
+        // Download CSV
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `zakat-history-${new Date().getTime()}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+        showNotification('Data berhasil diexport', 'success');
+    }
+
+    function showNotification(message, type = 'info') {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+        alertDiv.style.zIndex = '9999';
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 3000);
+    }
+
+    function setupEventListeners() {
+        // Reset filters when needed
+        const filterType = document.getElementById('filterType');
+        const searchInput = document.getElementById('searchInput');
+        
+        if (filterType) {
+            filterType.addEventListener('change', filterHistory);
+        }
+        if (searchInput) {
+            searchInput.addEventListener('input', filterHistory);
+        }
+    }
+
+    // Add hover effect style
+    const style = document.createElement('style');
+    style.textContent = `
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+    `;
+    document.head.appendChild(style);
 </script>
 </body>
 </html>

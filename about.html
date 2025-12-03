@@ -10,12 +10,12 @@
 </head>
 <body>
 
-    <header class="sticky-top shadow-sm">
+    <header class="sticky-top shadow-lg" id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.html">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="30" height="30" class="me-2"> 
-                    Zakat Digital
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="40" height="40" class="me-2 rounded-circle border border-2 border-white"> 
+                    <span>Zakat Digital</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -36,58 +36,280 @@
     </header>
 
     <main class="container my-5">
-        <div class="row">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-primary">Home</a></li>
+                <li class="breadcrumb-item active">Tentang Kami</li>
+            </ol>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="row mb-5 pb-4 border-bottom">
             <div class="col-lg-8 offset-lg-2 text-center">
-                <h1 class="mb-4 text-primary fw-bold">Tentang Kami: Amanah & Transparan</h1>
-                <p class="lead">Kami adalah platform digital yang berdedikasi untuk memfasilitasi pembayaran dan penyaluran zakat, infaq, dan sedekah (ZIS) secara **mudah, cepat, dan transparan**, sesuai dengan syariat Islam.</p>
-                <hr class="my-4">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Tentang Zakat Digital</span>
+                <h1 class="display-4 fw-bold text-primary mb-3">Amanah, Profesional & Transparan</h1>
+                <p class="lead text-muted fs-5 mb-0">Kami adalah platform digital yang berdedikasi untuk memfasilitasi pembayaran dan penyaluran zakat, infaq, dan sedekah (ZIS) secara mudah, cepat, dan transparan, sesuai dengan syariat Islam dan regulasi pemerintah.</p>
             </div>
         </div>
 
-        <div class="row mt-4">
-            <div class="col-md-6 mb-4">
-                <div class="card p-4 shadow-sm h-100 border-start border-5 border-success">
-                    <h3 class="text-success mb-3"><i class="fas fa-eye me-2"></i> Visi Kami</h3>
-                    <p>Menjadi lembaga pengelola ZIS terdepan yang profesional, amanah, dan berbasis teknologi untuk mewujudkan kesejahteraan umat yang merata dan berkelanjutan.</p>
+        <!-- Vision & Mission Section -->
+        <div class="row mt-5 mb-5 g-4">
+            <div class="col-lg-6">
+                <div class="vision-mission-card card p-5 h-100 border-0 shadow-lg rounded-4 hover-lift" style="border-left: 5px solid #2e7d32;">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box bg-success bg-opacity-10 rounded-3 p-3 me-3">
+                            <i class="fas fa-eye fa-2x text-success"></i>
+                        </div>
+                        <h3 class="text-success fw-bold mb-0">Visi Kami</h3>
+                    </div>
+                    <p class="text-muted mb-0">Menjadi lembaga pengelola ZIS terdepan yang profesional, amanah, dan berbasis teknologi untuk mewujudkan kesejahteraan umat yang merata dan berkelanjutan.</p>
                 </div>
             </div>
-            <div class="col-md-6 mb-4">
-                <div class="card p-4 shadow-sm h-100 border-start border-5 border-danger">
-                    <h3 class="text-danger mb-3"><i class="fas fa-bullseye me-2"></i> Misi Kami</h3>
-                    <ul>
-                        <li>Mengembangkan sistem pembayaran ZIS yang efisien, aman, dan mudah diakses secara digital.</li>
-                        <li>Menyalurkan dana ZIS kepada *mustahik* melalui program pemberdayaan yang tepat sasaran.</li>
+            <div class="col-lg-6">
+                <div class="vision-mission-card card p-5 h-100 border-0 shadow-lg rounded-4 hover-lift" style="border-left: 5px solid #d32f2f;">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box bg-danger bg-opacity-10 rounded-3 p-3 me-3">
+                            <i class="fas fa-bullseye fa-2x text-danger"></i>
+                        </div>
+                        <h3 class="text-danger fw-bold mb-0">Misi Kami</h3>
+                    </div>
+                    <ul class="text-muted mb-0">
+                        <li class="mb-2">Mengembangkan sistem pembayaran ZIS yang efisien, aman, dan mudah diakses secara digital.</li>
+                        <li class="mb-2">Menyalurkan dana ZIS kepada mustahik melalui program pemberdayaan yang tepat sasaran.</li>
                         <li>Menciptakan laporan keuangan yang akuntabel dan transparan, dapat diakses publik.</li>
                     </ul>
                 </div>
             </div>
         </div>
         
-        <div class="row mt-5 text-center">
-            <h2 class="mb-4 text-secondary"><i class="fas fa-hand-holding-usd me-2"></i> Landasan Nilai Inti</h2>
-            <div class="col-md-4 mb-3">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="text-info fw-bold">Amanah</h5>
-                    <p class="text-muted">Setiap dana dikelola dengan penuh tanggung jawab dan sesuai syariat.</p>
+        <!-- Core Values Section -->
+        <section class="py-5 mb-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-info bg-opacity-10 text-info mb-3">Nilai-Nilai Inti</span>
+                <h2 class="display-5 fw-bold text-dark mb-3">Landasan Komitmen Kami</h2>
+                <p class="fs-5 text-muted">Tiga nilai fundamental yang membimbing setiap keputusan dan tindakan kami</p>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="core-value-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                        <div class="value-header bg-success bg-opacity-10 p-4 text-center">
+                            <i class="fas fa-handshake fa-3x text-success mb-2"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-dark mb-2">Amanah</h5>
+                            <p class="text-muted small mb-0">Setiap dana dikelola dengan penuh tanggung jawab dan sesuai dengan syariat Islam. Kepercayaan adalah aset terbesar kami.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="core-value-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                        <div class="value-header bg-info bg-opacity-10 p-4 text-center">
+                            <i class="fas fa-briefcase fa-3x text-info mb-2"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-dark mb-2">Profesional</h5>
+                            <p class="text-muted small mb-0">Melayani dengan standar mutu tinggi dan tata kelola organisasi yang baik. Excellence adalah standar kami.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="core-value-card card h-100 border-0 shadow-sm rounded-4 hover-lift overflow-hidden">
+                        <div class="value-header bg-warning bg-opacity-10 p-4 text-center">
+                            <i class="fas fa-eye fa-3x text-warning mb-2"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-dark mb-2">Transparan</h5>
+                            <p class="text-muted small mb-0">Informasi penyaluran dana disajikan secara terbuka dan akuntabel. Accountability adalah komitmen kami.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="text-info fw-bold">Profesional</h5>
-                    <p class="text-muted">Melayani dengan standar mutu tinggi dan tata kelola organisasi yang baik.</p>
+        </section>
+
+        <!-- Impact Statistics Section -->
+        <section class="py-5 mb-5 bg-light rounded-4">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark mb-3">Dampak yang Kami Ciptakan</h2>
+                <p class="fs-5 text-muted">Berkat kepercayaan Anda, kami terus memberikan dampak positif bagi masyarakat</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="stat-card text-center p-4 rounded-3">
+                        <h3 class="display-6 fw-bold text-primary mb-2">500K+</h3>
+                        <p class="text-muted mb-0">Transaksi Berhasil</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card text-center p-4 rounded-3">
+                        <h3 class="display-6 fw-bold text-success mb-2">Rp 50M+</h3>
+                        <p class="text-muted mb-0">Dana Terkumpul</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card text-center p-4 rounded-3">
+                        <h3 class="display-6 fw-bold text-danger mb-2">100K+</h3>
+                        <p class="text-muted mb-0">Keluarga Terbantu</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="stat-card text-center p-4 rounded-3">
+                        <h3 class="display-6 fw-bold text-info mb-2">24/7</h3>
+                        <p class="text-muted mb-0">Dukungan Pelanggan</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <h5 class="text-info fw-bold">Transparan</h5>
-                    <p class="text-muted">Informasi penyaluran dana disajikan secara terbuka dan akuntabel.</p>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-5 mb-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Keunggulan Kami</span>
+                <h2 class="display-5 fw-bold text-dark mb-3">Mengapa Memilih Zakat Digital?</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="d-flex gap-3">
+                        <div>
+                            <div class="icon-circle bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; min-width: 60px;">
+                                <i class="fas fa-lock text-primary fa-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2">Keamanan Terjamin</h5>
+                            <p class="text-muted mb-0">Enkripsi tingkat bank untuk melindungi data dan transaksi Anda setiap saat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-3">
+                        <div>
+                            <div class="icon-circle bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; min-width: 60px;">
+                                <i class="fas fa-certificate text-success fa-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2">Sertifikasi Resmi</h5>
+                            <p class="text-muted mb-0">Terdaftar dan diawasi oleh otoritas resmi untuk menjamin legalitas penuh.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-3">
+                        <div>
+                            <div class="icon-circle bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; min-width: 60px;">
+                                <i class="fas fa-mobile-alt text-info fa-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2">Akses Mudah</h5>
+                            <p class="text-muted mb-0">Platform mobile-friendly yang dapat diakses kapan saja dan di mana saja.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-3">
+                        <div>
+                            <div class="icon-circle bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; min-width: 60px;">
+                                <i class="fas fa-chart-pie text-warning fa-lg"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2">Laporan Terperinci</h5>
+                            <p class="text-muted mb-0">Akses penuh ke laporan penyaluran dana dengan detail dan grafik visualisasi.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="bg-dark text-white pt-5 pb-3">... (Isi footer sama) ...</footer>
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Zakat Digital</h5>
+                    <p class="text-muted small mb-0">Platform penyaluran ZIS yang profesional, amanah, dan berbasis teknologi.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">Navigasi</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="programs.html" class="text-muted text-decoration-none">Program</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-muted text-decoration-none">Tentang Kami</a></li>
+                        <li><a href="history.html" class="text-muted text-decoration-none">Riwayat</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Kontak</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2">Jl. Digital No. 10, Jakarta</li>
+                        <li class="mb-2">Email: info@zakatdigital.com</li>
+                        <li>Telp: (021) 1234 5678</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Kebijakan Privasi</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center border-top pt-3 mt-4">
+                <p class="mb-0 text-muted small">&copy; 2024 Zakat Digital. Dikelola dengan Amanah.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <script>
+        // Smooth scroll untuk navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && document.querySelector(href)) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Dynamic header shadow on scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('shadow-lg');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.add('shadow-sm');
+                    header.classList.remove('shadow-lg');
+                }
+            });
+
+            // Animate statistics on scroll
+            const observerOptions = {
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-stat');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>

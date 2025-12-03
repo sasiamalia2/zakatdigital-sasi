@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Pembayaran Zakat & Infaq - Zakat Digital</title>
+    <title>Formulir Donasi Zakat - Zakat Digital</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css"> 
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <header class="sticky-top shadow-sm">
+    <header class="sticky-top" id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="index.html">
-                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="30" height="30" class="me-2"> 
+                    <img src="assets/images/Gemini_Generated_Image_gdbrpggdbrpggdbr.png" alt="Logo Zakat" width="40" height="40" class="me-2 rounded-circle border border-2 border-white" style="box-shadow: 0 2px 8px rgba(0,0,0,0.15);"> 
                     Zakat Digital
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,8 +24,8 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html#kalkulator-zakat">Kalkulator</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="donasi-form.html">Donasi</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#kalkulator-zakat">Kalkulator</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="donasi-form.html">Donasi</a></li> 
                         <li class="nav-item"><a class="nav-link" href="programs.html">Program</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">Tentang Kami</a></li>
                         <li class="nav-item"><a class="nav-link" href="history.html">Riwayat</a></li>
@@ -36,88 +36,416 @@
         </nav>
     </header>
 
-    <main>
-        <section id="donasi-form-page" class="py-5">
+    <main class="py-5 bg-light">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="bg-white py-3 border-bottom">
             <div class="container">
-                <h2 class="text-center text-success mb-5 fw-bold"><i class="fas fa-money-bill-wave me-2"></i> Proses Pembayaran Zakat & Infaq</h2>
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="card p-4 shadow-lg border-success border-3">
-                            <form id="form-pembayaran">
-                                <p class="text-muted text-center mb-4">Lengkapi data untuk penyaluran dana yang amanah dan transparan.</p>
-                                <div class="mb-3">
-                                    <label for="jenisZakat" class="form-label fw-bold">Pilih Jenis Pembayaran</label>
-                                    <select class="form-select form-select-lg" id="jenisZakat" required>
-                                        <option value="" disabled selected>-- Pilih Zakat/Infaq/Sedekah --</option>
-                                        <option value="Zakat Penghasilan">Zakat Penghasilan (2.5%)</option>
-                                        <option value="Zakat Maal">Zakat Maal (Harta)</option>
-                                        <option value="Infaq">Infaq (Donasi Umum)</option>
-                                        <option value="Sedekah">Sedekah (Amal Jariyah)</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nominal" class="form-label fw-bold">Nominal Pembayaran (Rp)</label>
-                                    <input type="number" class="form-control form-control-lg" id="nominal" placeholder="Minimal Rp 10.000" required>
-                                </div>
-                                <hr>
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Wajib diisi untuk laporan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email / No. HP</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Contoh: user@mail.com" required>
-                                </div>
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-success btn-lg mt-3">Proses Pembayaran Sekarang</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="programs.html">Program</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Formulir Donasi</li>
+                </ol>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <span class="badge bg-success rounded-pill px-3 py-2 mb-3" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">💚 Bayar Sekarang</span>
+                    <h1 class="display-4 fw-bold mb-3 text-dark">Formulir Pembayaran Zakat</h1>
+                    <p class="lead text-muted mb-0" style="max-width: 600px; margin-left: auto; margin-right: auto;">Isi data diri Anda dengan benar. Dana Anda akan disalurkan secara amanah kepada mustahik yang membutuhkan.</p>
+                    <div class="mt-4 border-bottom-gradient" style="width: 80px; height: 3px; background: linear-gradient(90deg, #10b981, #059669); margin-left: auto; margin-right: auto;"></div>
                 </div>
             </div>
         </section>
-    </main>
+
+        <!-- Form Section -->
+        <section class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Progress Indicator -->
+                    <div class="mb-5">
+                        <div class="progress" style="height: 4px;">
+                            <div class="progress-bar bg-success" id="formProgress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="row text-center mt-4 small text-muted">
+                            <div class="col-4">
+                                <div class="step-number active" style="width: 30px; height: 30px; margin: 0 auto; border-radius: 50%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 8px;">1</div>
+                                <div>Pilih Donasi</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="step-number" style="width: 30px; height: 30px; margin: 0 auto; border-radius: 50%; background: #e5e7eb; color: #9ca3af; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 8px;">2</div>
+                                <div>Data Pribadi</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="step-number" style="width: 30px; height: 30px; margin: 0 auto; border-radius: 50%; background: #e5e7af; color: #9ca3af; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 8px;">3</div>
+                                <div>Konfirmasi</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-lg p-5 border-0" style="border-radius: 16px;">
+                        <form id="donasiForm">
+                            
+                            <div class="alert alert-info mb-4" id="alert-kalkulator" style="display: none; border-left: 4px solid #0d6efd;">
+                                <i class="fas fa-info-circle me-2"></i> Anda dialihkan dari Kalkulator Zakat. Jenis Zakat dan Nominal sudah terisi otomatis.
+                            </div>
+
+                            <!-- Donation Type Selection -->
+                            <div class="mb-5">
+                                <label class="form-label fw-bold mb-3" style="font-size: 1.1rem;">
+                                    <i class="fas fa-hand-holding-heart me-2" style="color: #10b981;"></i> Pilih Jenis Donasi <span class="text-danger">*</span>
+                                </label>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="donation-type-card" data-type="Zakat Penghasilan">
+                                            <div class="donation-type-icon">📊</div>
+                                            <h6>Zakat Penghasilan</h6>
+                                            <small class="text-muted">Dari penghasilan bulanan</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="donation-type-card" data-type="Zakat Maal">
+                                            <div class="donation-type-icon">💰</div>
+                                            <h6>Zakat Maal</h6>
+                                            <small class="text-muted">Dari harta/tabungan</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="donation-type-card" data-type="Infaq/Sedekah">
+                                            <div class="donation-type-icon">🤲</div>
+                                            <h6>Infaq/Sedekah</h6>
+                                            <small class="text-muted">Sumbangan sukarela</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="donation-type-card" data-type="Fidyah">
+                                            <div class="donation-type-icon">🌙</div>
+                                            <h6>Fidyah</h6>
+                                            <small class="text-muted">Pembayaran fidyah puasa</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <select class="form-select form-select-lg d-none" id="jenisDonasi" required>
+                                    <option value="">-- Pilih Jenis Zakat/Donasi --</option>
+                                    <option value="Zakat Penghasilan">Zakat Penghasilan</option>
+                                    <option value="Zakat Maal">Zakat Maal (Harta)</option>
+                                    <option value="Infaq/Sedekah">Infaq/Sedekah</option>
+                                    <option value="Fidyah">Fidyah</option>
+                                </select>
+                            </div>
+
+                            <!-- Nominal Input -->
+                            <div class="mb-5">
+                                <label for="nominalDonasi" class="form-label fw-bold mb-3" style="font-size: 1.1rem;">
+                                    <i class="fas fa-money-bill-wave me-2" style="color: #10b981;"></i> Nominal Donasi <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text fw-bold" style="background: #f3f4f6; border: 2px solid #e5e7eb;">Rp</span>
+                                    <input type="text" class="form-control" id="nominalDonasi" placeholder="Contoh: 250.000" required style="border: 2px solid #e5e7eb;">
+                                </div>
+                                <div class="form-text mt-2"><i class="fas fa-lightbulb me-1" style="color: #f59e0b;"></i> Masukkan jumlah yang akan Anda bayarkan.</div>
+                            </div>
+
+                            <hr class="my-5">
+
+                            <!-- Personal Data Section -->
+                            <h5 class="mb-4 text-dark fw-bold" style="font-size: 1.15rem;">
+                                <i class="fas fa-user me-2" style="color: #10b981;"></i> Data Pribadi (Muzakki)
+                            </h5>
+                            
+                            <div class="mb-3">
+                                <label for="namaLengkap" class="form-label fw-bold">
+                                    <i class="fas fa-id-card me-2" style="color: #6c757d;"></i> Nama Lengkap
+                                </label>
+                                <input type="text" class="form-control form-control-lg" id="namaLengkap" placeholder="Nama Anda" style="border: 2px solid #e5e7eb;">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-bold">
+                                    <i class="fas fa-envelope me-2" style="color: #6c757d;"></i> Email <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control form-control-lg" id="email" placeholder="contoh@email.com" required style="border: 2px solid #e5e7eb;">
+                                <div class="form-text">Kami akan mengirim konfirmasi ke email Anda.</div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="nomorHP" class="form-label fw-bold">
+                                    <i class="fas fa-phone me-2" style="color: #6c757d;"></i> Nomor WhatsApp
+                                </label>
+                                <input type="tel" class="form-control form-control-lg" id="nomorHP" placeholder="Cth: 081234567890" style="border: 2px solid #e5e7eb;">
+                                <div class="form-text">Untuk notifikasi pembayaran (opsional).</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid gap-2 mt-5">
+                                <button type="submit" class="btn btn-success btn-lg fw-bold py-3" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none;">
+                                    <i class="fas fa-check-circle me-2"></i> Lanjutkan ke Pembayaran
+                                </button>
+                            </div>
+
+                            <p class="text-center text-muted mt-4 small">
+                                <i class="fas fa-shield-alt me-1" style="color: #10b981;"></i> Pembayaran Anda 100% aman dan terpercaya
+                            </p>
+
+                        </form>
+                    </div>
+
+                    <!-- Info Cards -->
+                    <div class="row g-3 mt-5">
+                        <div class="col-md-6">
+                            <div class="info-card p-4" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f7ef 100%); border-left: 4px solid #10b981; border-radius: 8px;">
+                                <h6 class="fw-bold mb-2"><i class="fas fa-check-circle me-2" style="color: #10b981;"></i> Amanah</h6>
+                                <p class="small text-muted mb-0">Dana Anda disalurkan sesuai syariat Islam dengan transparan.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-card p-4" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f7ef 100%); border-left: 4px solid #10b981; border-radius: 8px;">
+                                <h6 class="fw-bold mb-2"><i class="fas fa-clock me-2" style="color: #10b981;"></i> Cepat</h6>
+                                <p class="small text-muted mb-0">Proses pembayaran hanya membutuhkan 2-3 menit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
     <footer class="bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Zakat Digital</h5>
-                    <p class="text-muted">Platform penyaluran ZIS yang profesional, amanah, dan berbasis teknologi.</p>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Zakat Digital</h5>
+                    <p class="text-muted small">Platform penyaluran ZIS yang profesional, amanah, dan berbasis teknologi untuk kemajuan bersama.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
                 <div class="col-md-2 mb-4">
-                    <h6>Navigasi</h6>
+                    <h6 class="fw-bold mb-3">Navigasi</h6>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="programs.html">Program</a></li>
-                        <li><a href="about.html">Tentang Kami</a></li>
-                        <li><a href="history.html">Riwayat</a></li>
+                        <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="programs.html" class="text-muted text-decoration-none">Program</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-muted text-decoration-none">Tentang Kami</a></li>
+                        <li><a href="history.html" class="text-muted text-decoration-none">Riwayat</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <h6>Kontak Kami</h6>
-                    <ul class="list-unstyled text-muted">
-                        <li>Jl. Digital No. 10, Jakarta</li>
-                        <li>Email: info@zakatdigital.com</li>
-                        <li>Telp: (021) 1234 5678</li>
+                    <h6 class="fw-bold mb-3">Kontak Kami</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Jl. Digital No. 10, Jakarta</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i><a href="mailto:info@zakatdigital.com" class="text-muted">info@zakatdigital.com</a></li>
+                        <li><i class="fas fa-phone me-2"></i><a href="tel:+621234567890" class="text-muted">(021) 1234 5678</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h6>Legal</h6>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Kebijakan Privasi</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
             <div class="text-center border-top pt-3 mt-4">
-                <p class="mb-0 text-muted">&copy; 2024 Zakat Digital. Dikelola dengan Amanah.</p>
+                <p class="mb-0 text-muted small">&copy; 2024 Zakat Digital. Dikelola dengan Amanah.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/donasi.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const urlParams = new URLSearchParams(window.location.search);
+            const nominal = urlParams.get('nominal');
+            const jenis = urlParams.get('jenis');
+
+            const nominalInput = document.getElementById('nominalDonasi');
+            const jenisSelect = document.getElementById('jenisDonasi');
+            const alertKalkulator = document.getElementById('alert-kalkulator');
+            const donasiForm = document.getElementById('donasiForm');
+            const donationTypeCards = document.querySelectorAll('.donation-type-card');
+
+            // Header shadow on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('shadow-lg');
+                }
+            });
+
+            // Donation type card selection
+            donationTypeCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    donationTypeCards.forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    const type = card.getAttribute('data-type');
+                    jenisSelect.value = type;
+                    updateFormProgress();
+                });
+            });
+
+            if (nominal && jenis) {
+                alertKalkulator.style.display = 'block';
+                const nominalFormatted = parseFloat(nominal).toLocaleString('id-ID');
+                nominalInput.value = nominalFormatted;
+                
+                // Select corresponding donation type card and option
+                donationTypeCards.forEach(card => {
+                    if (card.getAttribute('data-type') === jenis) {
+                        card.classList.add('selected');
+                    }
+                });
+                
+                for (let i = 0; i < jenisSelect.options.length; i++) {
+                    if (jenisSelect.options[i].value === jenis) {
+                        jenisSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            // Format Rupiah secara real-time saat user mengetik
+            nominalInput.addEventListener('input', e => {
+                const raw = e.target.value.replace(/\D/g, '');
+                e.target.value = raw ? parseInt(raw).toLocaleString('id-ID') : "";
+                updateFormProgress();
+            });
+
+            // Update form progress bar
+            function updateFormProgress() {
+                const jenis = jenisSelect.value.trim();
+                const nominal = nominalInput.value.trim();
+                let progress = 0;
+                
+                if (jenis) progress += 33;
+                if (nominal) progress += 33;
+                if (document.getElementById('email').value.trim()) progress += 34;
+                
+                document.getElementById('formProgress').style.width = progress + '%';
+            }
+
+            // Update progress on input changes
+            document.getElementById('email').addEventListener('input', updateFormProgress);
+
+            // Handle form submission
+            donasiForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const jenisDonasi = jenisSelect.value.trim();
+                const nominalDonasi = nominalInput.value.replace(/\D/g, '');
+                const namaLengkap = document.getElementById('namaLengkap').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const nomorHP = document.getElementById('nomorHP').value.trim();
+
+                if (!jenisDonasi) {
+                    alert('Silakan pilih jenis donasi');
+                    return;
+                }
+
+                if (!nominalDonasi || parseInt(nominalDonasi) <= 0) {
+                    alert('Silakan masukkan nominal donasi yang valid');
+                    return;
+                }
+
+                if (!email) {
+                    alert('Silakan masukkan email');
+                    return;
+                }
+
+                const transaction = {
+                    id: Date.now(),
+                    tanggal: new Date().toLocaleDateString('id-ID', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }),
+                    jenis: jenisDonasi,
+                    nominal: parseInt(nominalDonasi),
+                    nama: namaLengkap || 'Donatur Anonim',
+                    emailhp: email + (nomorHP ? ' / ' + nomorHP : ''),
+                    status: 'Berhasil (Simulasi)'
+                };
+
+                const history = JSON.parse(localStorage.getItem('zakatHistory')) || [];
+                history.unshift(transaction);
+                localStorage.setItem('zakatHistory', JSON.stringify(history));
+
+                displaySuccessMessage(transaction);
+            });
+
+            function displaySuccessMessage(transaction) {
+                const mainElement = document.querySelector('main');
+                const successHtml = `
+                    <div class="py-5 bg-light">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-7">
+                                    <div class="card shadow-lg p-5 border-0" style="border-radius: 16px;">
+                                        <div class="text-center mb-4">
+                                            <div style="width: 80px; height: 80px; margin: 0 auto; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-check text-white" style="font-size: 2.5rem;"></i>
+                                            </div>
+                                        </div>
+                                        <h2 class="text-center fw-bold mb-2" style="color: #10b981; font-size: 1.8rem;">Pembayaran Berhasil!</h2>
+                                        <p class="text-center lead mb-4">Terima kasih, <strong>${transaction.nama}</strong>!</p>
+                                        <hr>
+                                        <div class="mb-4">
+                                            <div class="row g-3">
+                                                <div class="col-12">
+                                                    <div class="p-3" style="background: #f9fafb; border-radius: 8px;">
+                                                        <small class="text-muted d-block">Jenis Donasi</small>
+                                                        <p class="fw-bold mb-0">${transaction.jenis}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="p-3" style="background: #f9fafb; border-radius: 8px;">
+                                                        <small class="text-muted d-block">Nominal</small>
+                                                        <p class="fw-bold mb-0" style="font-size: 1.3rem; color: #10b981;">Rp ${transaction.nominal.toLocaleString('id-ID')}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="p-3" style="background: #f9fafb; border-radius: 8px;">
+                                                        <small class="text-muted d-block">Email/No. HP</small>
+                                                        <p class="small fw-bold mb-0">${transaction.emailhp}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="p-3" style="background: #f9fafb; border-radius: 8px;">
+                                                        <small class="text-muted d-block">Tanggal</small>
+                                                        <p class="small fw-bold mb-0">${transaction.tanggal}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-success border-0 mb-4">
+                                            <i class="fas fa-info-circle me-2"></i> Kami akan segera memproses penyaluran dana Anda. <strong>Jazaakallahu Khairan Katsiran</strong>.
+                                        </div>
+                                        <div class="d-grid gap-2">
+                                            <a href="index.html" class="btn btn-success btn-lg fw-bold" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none;">
+                                                <i class="fas fa-home me-2"></i> Kembali ke Beranda
+                                            </a>
+                                            <a href="history.html" class="btn btn-outline-success btn-lg fw-bold">
+                                                <i class="fas fa-history me-2"></i> Lihat Riwayat Transaksi
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                mainElement.innerHTML = successHtml;
+            }
+        });
+    </script> 
 </body>
 </html>

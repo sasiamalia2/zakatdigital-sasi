@@ -8,6 +8,79 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Calculator-specific animations */
+        .calculator-wrapper {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .nisab-card {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .nisab-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .nisab-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .result-card {
+            animation: slideInUp 0.5s ease-out forwards;
+        }
+
+        .info-box {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .info-box:nth-child(1) { animation-delay: 0.1s; }
+        .info-box:nth-child(2) { animation-delay: 0.2s; }
+        .info-box:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Enhanced form interactions */
+        #penghasilan {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        #penghasilan:focus {
+            background: #f0f9ff;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+        }
+
+        /* Button enhancements */
+        .btn-lg {
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Info section styling */
+        .info-section {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 0.3s forwards;
+        }
+
+        /* Result animations */
+        .result-success {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .result-warning {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Stat boxes */
+        .stat-box {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+        }
+    </style>
 </head>
 <body>
 
@@ -62,58 +135,60 @@
         <!-- Calculator Section -->
         <section class="container py-5">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-8 calculator-wrapper">
                     <!-- Nisab Info Card -->
-                    <div class="row g-3 mb-5">
+                    <div class="row g-3 mb-5 stagger-item">
                         <div class="col-md-6">
-                            <div class="nisab-card p-4" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid #3b82f6; border-radius: 8px;">
-                                <small class="text-muted d-block mb-1">
-                                    <i class="fas fa-info-circle me-1" style="color: #3b82f6;"></i> Nisab Bulanan
+                            <div class="nisab-card p-4 hover-lift" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid #3b82f6; border-radius: 12px;">
+                                <small class="text-muted d-block mb-2" style="font-weight: 500;">
+                                    <i class="fas fa-coins me-2" style="color: #3b82f6;"></i> Nisab Bulanan
                                 </small>
-                                <h5 class="fw-bold mb-0" style="color: #1e40af; font-size: 1.3rem;">Rp <span id="nisab-value">7.500.000</span></h5>
-                                <small class="text-muted d-block mt-1">Minimal penghasilan untuk wajib zakat</small>
+                                <h5 class="fw-bold mb-2" style="color: #1e40af; font-size: 1.4rem;">Rp <span id="nisab-value">7.500.000</span></h5>
+                                <small class="text-muted d-block" style="font-size: 0.85rem;">Minimal penghasilan untuk wajib zakat</small>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="nisab-card p-4" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #10b981; border-radius: 8px;">
-                                <small class="text-muted d-block mb-1">
-                                    <i class="fas fa-percent me-1" style="color: #10b981;"></i> Tarif Zakat
+                            <div class="nisab-card p-4 hover-lift" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #10b981; border-radius: 12px;">
+                                <small class="text-muted d-block mb-2" style="font-weight: 500;">
+                                    <i class="fas fa-percent me-2" style="color: #10b981;"></i> Tarif Zakat
                                 </small>
-                                <h5 class="fw-bold mb-0" style="color: #15803d; font-size: 1.3rem;">2.5%</h5>
-                                <small class="text-muted d-block mt-1">Dari penghasilan bulanan yang memenuhi nisab</small>
+                                <h5 class="fw-bold mb-2" style="color: #15803d; font-size: 1.4rem;">2.5%</h5>
+                                <small class="text-muted d-block" style="font-size: 0.85rem;">Dari penghasilan bulanan yang memenuhi nisab</small>
                             </div>
                         </div>
                     </div>
 
                     <!-- Calculator Card -->
-                    <div class="card shadow-lg p-5 border-0" style="border-radius: 16px;">
+                    <div class="card shadow-lg p-5 border-0 stagger-item" style="border-radius: 16px; animation-delay: 0.3s;">
                         <h5 class="fw-bold mb-4 text-dark" style="font-size: 1.2rem;">
                             <i class="fas fa-calculator me-2" style="color: #3b82f6;"></i> Hitung Zakat Anda
                         </h5>
 
                         <form id="zakatCalculatorForm">
                             <div class="mb-4">
-                                <label for="penghasilan" class="form-label fw-bold mb-3" style="font-size: 1.1rem;">
+                                <label for="penghasilan" class="form-label fw-bold mb-3" style="font-size: 1.1rem; color: #1f2937;">
                                     <i class="fas fa-wallet me-2" style="color: #3b82f6;"></i> Penghasilan Bulanan Bersih <span class="text-danger">*</span>
                                 </label>
                                 <div class="input-group input-group-lg">
-                                    <span class="input-group-text fw-bold" style="background: #f3f4f6; border: 2px solid #e5e7eb;">Rp</span>
-                                    <input type="text" class="form-control" id="penghasilan" placeholder="Contoh: 8.500.000" required style="border: 2px solid #e5e7eb;">
+                                    <span class="input-group-text fw-bold" style="background: #f3f4f6; border: 2px solid #e5e7eb; color: #3b82f6;">Rp</span>
+                                    <input type="text" class="form-control" id="penghasilan" placeholder="Contoh: 8.500.000" required style="border: 2px solid #e5e7eb; font-weight: 500;">
                                 </div>
-                                <div class="form-text mt-2">
+                                <div class="form-text mt-2" style="font-size: 0.9rem;">
                                     <i class="fas fa-lightbulb me-1" style="color: #f59e0b;"></i> Masukkan total penghasilan bersih Anda setiap bulan.
                                 </div>
                             </div>
 
                             <!-- Result Section -->
                             <div id="hasil-zakat" class="mt-5">
-                                <div class="text-center text-muted" style="padding: 3rem 1rem;">
-                                    <i class="fas fa-arrow-down" style="font-size: 2rem; color: #d1d5db; margin-bottom: 1rem; display: block;"></i>
+                                <div class="text-center text-muted py-5" style="color: #9ca3af;">
+                                    <div style="font-size: 3rem; margin-bottom: 1rem; animation: float 4s ease-in-out infinite;">
+                                        <i class="fas fa-arrow-down" style="color: #d1d5db;"></i>
+                                    </div>
                                     <p style="font-size: 0.95rem;">Masukkan penghasilan Anda dan klik tombol di bawah untuk melihat hasil perhitungan zakat.</p>
                                 </div>
                             </div>
 
-                            <button id="hitungZakatButton" type="button" class="btn btn-primary btn-lg w-100 mt-4 fw-bold py-3" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border: none;">
+                            <button id="hitungZakatButton" type="button" class="btn btn-primary btn-lg w-100 mt-4 fw-bold py-3 stagger-item" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border: none; animation-delay: 0.4s;">
                                 <i class="fas fa-calculator me-2"></i> Hitung Zakat Sekarang
                             </button>
 
@@ -128,7 +203,7 @@
                     </div>
 
                     <!-- Action Buttons -->
-                    <div class="row g-3 mt-4">
+                    <div class="row g-3 mt-4 stagger-item" style="animation-delay: 0.5s;">
                         <div class="col-md-6">
                             <a href="donasi-form.html" class="btn btn-success btn-lg w-100 fw-bold py-3" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none;">
                                 <i class="fas fa-check-circle me-2"></i> Bayar Zakat Sekarang
@@ -142,24 +217,24 @@
                     </div>
 
                     <!-- Info Section -->
-                    <div class="row g-3 mt-5 pt-4 border-top">
-                        <div class="col-md-4">
-                            <div class="info-box text-center p-3">
-                                <h6 style="color: #3b82f6; font-size: 2rem;" class="mb-2"><i class="fas fa-clock"></i></h6>
+                    <div class="row g-3 mt-5 pt-4 border-top info-section">
+                        <div class="col-md-4 info-box">
+                            <div class="text-center p-4 hover-lift" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 12px;">
+                                <h6 style="color: #3b82f6; font-size: 2.5rem; margin-bottom: 1rem;" class="icon-bounce"><i class="fas fa-clock"></i></h6>
                                 <h6 class="fw-bold mb-2">Cepat</h6>
                                 <small class="text-muted">Hitung zakat dalam hitungan detik</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="info-box text-center p-3">
-                                <h6 style="color: #3b82f6; font-size: 2rem;" class="mb-2"><i class="fas fa-lock"></i></h6>
+                        <div class="col-md-4 info-box">
+                            <div class="text-center p-4 hover-lift" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px;">
+                                <h6 style="color: #f59e0b; font-size: 2.5rem; margin-bottom: 1rem;" class="icon-bounce" style="animation-delay: 0.2s;"><i class="fas fa-lock"></i></h6>
                                 <h6 class="fw-bold mb-2">Aman</h6>
                                 <small class="text-muted">Data Anda tidak tersimpan</small>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="info-box text-center p-3">
-                                <h6 style="color: #3b82f6; font-size: 2rem;" class="mb-2"><i class="fas fa-check"></i></h6>
+                        <div class="col-md-4 info-box">
+                            <div class="text-center p-4 hover-lift" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px;">
+                                <h6 style="color: #10b981; font-size: 2.5rem; margin-bottom: 1rem;" class="icon-bounce" style="animation-delay: 0.4s;"><i class="fas fa-check"></i></h6>
                                 <h6 class="fw-bold mb-2">Akurat</h6>
                                 <small class="text-muted">Sesuai dengan ketentuan Islam</small>
                             </div>
@@ -217,10 +292,11 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/donasi.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.getElementById('header');
-            const NISAB_BULANAN = 7500000; // Updated nisab value
+            const NISAB_BULANAN = 7500000;
             const TARIF_ZAKAT = 0.025;
             const penghasilanInput = document.getElementById('penghasilan');
             const hitungButton = document.getElementById('hitungZakatButton');
@@ -228,46 +304,56 @@
             const hasilZakat = document.getElementById('hasil-zakat');
             const nisabDisplay = document.getElementById('nisab-value');
 
-            // Update nisab display
-            nisabDisplay.textContent = NISAB_BULANAN.toLocaleString('id-ID');
+            // Update nisab display with formatting
+            nisabDisplay.textContent = getFormattedCurrency(NISAB_BULANAN);
 
-            // Header shadow on scroll
+            // Header shadow on scroll with modern effect
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     header.classList.add('shadow-lg');
+                    header.classList.add('scrolled');
                 } else {
                     header.classList.remove('shadow-lg');
+                    header.classList.remove('scrolled');
                 }
             });
 
-            // Format Rupiah saat user mengetik
+            // Format Rupiah in real-time using utility function
             penghasilanInput.addEventListener('input', e => {
                 const raw = e.target.value.replace(/\D/g, '');
-                e.target.value = raw ? parseInt(raw).toLocaleString('id-ID') : "";
+                if (raw) {
+                    e.target.value = getFormattedCurrency(parseInt(raw));
+                } else {
+                    e.target.value = '';
+                }
             });
 
-            // Hitung Zakat button
+            // Hitung Zakat button with validation
             hitungButton.addEventListener('click', () => {
                 const nilai = penghasilanInput.value.replace(/\D/g, '');
                 
-                if (!nilai || parseInt(nilai) <= 0) {
-                    alert('Silakan masukkan penghasilan yang valid');
+                // Use utility validation
+                if (!isValidNominal(nilai)) {
+                    alert('Silakan masukkan penghasilan yang valid (lebih dari 0)');
+                    penghasilanInput.focus();
                     return;
                 }
 
                 const penghasilan = parseInt(nilai);
-                const zakatAmount = Math.round(penghasilan * TARIF_ZAKAT);
-                const isEligible = penghasilan >= NISAB_BULANAN;
-
-                displayResult(penghasilan, zakatAmount, isEligible);
+                
+                // Use utility calculation
+                const result = calculateZakat(penghasilan, NISAB_BULANAN);
+                displayResult(penghasilan, result.amount, result.eligible, result.shortfall);
             });
 
             // Reset button
             resetButton.addEventListener('click', () => {
                 penghasilanInput.value = '';
                 hasilZakat.innerHTML = `
-                    <div class="text-center text-muted" style="padding: 3rem 1rem;">
-                        <i class="fas fa-arrow-down" style="font-size: 2rem; color: #d1d5db; margin-bottom: 1rem; display: block;"></i>
+                    <div class="text-center text-muted py-5" style="color: #9ca3af;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem; animation: float 4s ease-in-out infinite;">
+                            <i class="fas fa-arrow-down" style="color: #d1d5db;"></i>
+                        </div>
                         <p style="font-size: 0.95rem;">Masukkan penghasilan Anda dan klik tombol di bawah untuk melihat hasil perhitungan zakat.</p>
                     </div>
                 `;
@@ -283,45 +369,47 @@
                 }
             });
 
-            function displayResult(penghasilan, zakatAmount, isEligible) {
-                const kekurangan = NISAB_BULANAN - penghasilan;
-                
+            function displayResult(penghasilan, zakatAmount, isEligible, shortfall) {
                 if (!isEligible) {
                     hasilZakat.innerHTML = `
-                        <div class="mt-4">
-                            <div class="alert alert-warning border-0" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
-                                <h6 class="fw-bold mb-2"><i class="fas fa-exclamation-triangle me-2" style="color: #b45309;"></i> Belum Wajib Zakat</h6>
-                                <p class="mb-2">Penghasilan Anda belum mencapai nisab minimum.</p>
-                                <p class="mb-0"><strong>Kekurangan:</strong> Rp ${kekurangan.toLocaleString('id-ID')}</p>
+                        <div class="mt-4 result-card result-warning">
+                            <div class="alert alert-warning border-0" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; border-left: 4px solid #f59e0b;">
+                                <h6 class="fw-bold mb-2" style="color: #b45309;"><i class="fas fa-exclamation-triangle me-2"></i> Belum Wajib Zakat</h6>
+                                <p class="mb-2" style="color: #92400e;">Penghasilan Anda belum mencapai nisab minimum untuk wajib membayar zakat.</p>
+                                <div class="p-3 mt-3" style="background: white; border-radius: 8px; border-left: 3px solid #f59e0b;">
+                                    <small class="text-muted d-block mb-1">Kekurangan:</small>
+                                    <p class="fw-bold mb-0" style="color: #f59e0b; font-size: 1.2rem;">Rp ${getFormattedCurrency(shortfall)}</p>
+                                </div>
+                                <small class="text-muted d-block mt-3"><i class="fas fa-info-circle me-1"></i> Anda tetap bisa melakukan infaq atau sedekah sesuai kemampuan.</small>
                             </div>
                         </div>
                     `;
                 } else {
                     hasilZakat.innerHTML = `
-                        <div class="mt-4">
-                            <div class="alert alert-success border-0 mb-3" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);">
-                                <h6 class="fw-bold mb-3" style="color: #15803d;"><i class="fas fa-check-circle me-2"></i> Anda Wajib Membayar Zakat</h6>
+                        <div class="mt-4 result-card result-success">
+                            <div class="alert alert-success border-0 mb-3" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; border-left: 4px solid #10b981;">
+                                <h6 class="fw-bold mb-3" style="color: #15803d; font-size: 1.1rem;"><i class="fas fa-check-circle me-2"></i> Anda Wajib Membayar Zakat</h6>
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <div class="p-3" style="background: white; border-radius: 8px; border-left: 3px solid #10b981;">
-                                            <small class="text-muted d-block mb-1">Penghasilan Bulanan</small>
-                                            <p class="fw-bold mb-0">Rp ${penghasilan.toLocaleString('id-ID')}</p>
+                                        <div class="stat-box p-3" style="background: white; border-radius: 8px; border-left: 3px solid #10b981;">
+                                            <small class="text-muted d-block mb-1" style="font-size: 0.85rem;">Penghasilan Bulanan</small>
+                                            <p class="fw-bold mb-0" style="color: #1f2937; font-size: 1.1rem;">Rp ${getFormattedCurrency(penghasilan)}</p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="p-3" style="background: white; border-radius: 8px; border-left: 3px solid #f59e0b;">
-                                            <small class="text-muted d-block mb-1">Tarif Zakat</small>
-                                            <p class="fw-bold mb-0">${(TARIF_ZAKAT * 100)}%</p>
+                                        <div class="stat-box p-3" style="background: white; border-radius: 8px; border-left: 3px solid #f59e0b;">
+                                            <small class="text-muted d-block mb-1" style="font-size: 0.85rem;">Tarif Zakat</small>
+                                            <p class="fw-bold mb-0" style="color: #1f2937; font-size: 1.1rem;">${(TARIF_ZAKAT * 100)}%</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card border-0 p-4 mb-3" style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);">
+                            <div class="card border-0 p-4 mb-3 hover-lift" style="background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 12px;">
                                 <div class="text-center">
-                                    <small class="text-muted d-block mb-2">Zakat yang Harus Anda Bayarkan</small>
-                                    <h3 class="fw-bold" style="color: #10b981; font-size: 2rem;">Rp ${zakatAmount.toLocaleString('id-ID')}</h3>
-                                    <small class="text-muted d-block">Setiap bulan</small>
+                                    <small class="text-muted d-block mb-2" style="font-weight: 500;">Zakat yang Harus Anda Bayarkan</small>
+                                    <h2 class="fw-bold" style="color: #10b981; font-size: 2.2rem; letter-spacing: 0.5px;">Rp ${getFormattedCurrency(zakatAmount)}</h2>
+                                    <small class="text-muted d-block" style="margin-top: 0.5rem;">Setiap bulan</small>
                                 </div>
                             </div>
 
@@ -338,6 +426,11 @@
 
                 hitungButton.style.display = 'none';
                 resetButton.style.display = 'block';
+                
+                // Smooth scroll to results
+                setTimeout(() => {
+                    hasilZakat.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
             }
         });
     </script> 

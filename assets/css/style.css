@@ -78,13 +78,16 @@ a {
 /* 3. NAVBAR & HEADER */
 .navbar {
     min-height: 70px; /* Memastikan header punya tinggi yang cukup */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 25px rgba(13, 71, 161, 0.12);
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
 }
 
 .navbar:not(.navbar-light) {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%) !important;
 }
 
 .navbar.scrolled {
@@ -96,11 +99,11 @@ a {
     margin-right: 10px;
     position: relative;
     transition: all 0.3s ease;
-    color: #374151 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .nav-link:hover {
-    color: #0d47a1 !important;
+    color: #ffffff !important;
 }
 
 .nav-link::after {
@@ -110,7 +113,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    background: linear-gradient(135deg, #ffffff, #e3f2fd);
     transition: width 0.3s ease;
 }
 
@@ -119,7 +122,7 @@ a {
 }
 
 .nav-link.active {
-    color: #0d47a1 !important;
+    color: #ffffff !important;
 }
 
 .nav-link.active::after {

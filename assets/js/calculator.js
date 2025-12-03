@@ -1,109 +1,94 @@
-// assets/js/calculator.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const penghasilanInput = document.getElementById('penghasilan');
     const hasilZakatDiv = document.getElementById('hasil-zakat');
     const nisabValueSpan = document.getElementById('nisab-value');
-    
-    // Mengambil tombol utama kalkulator
-    const bayarZakatButton = document.querySelector('#kalkulator-zakat .btn-primary');
 
-    // Pastikan nilai NISAB konstan (sama dengan yang digunakan di donasi-form.html)
-    const NISAB_BULANAN = 7083333; 
+    // Tombol yang benar sesuai HTML
+    const bayarZakatButton = document.getElementById('hitungZakatButton');
 
-    // Update nilai nisab di tampilan
+    // Nisab bulanan (update sesuai harga emas) - 87.48 gram emas @ 610,000 per gram
+    const NISAB_BULANAN = 7083333;
+    const ZAKAT_PERCENTAGE = 0.025; // 2.5%
+
+    // Update tampilan nisab
     if (nisabValueSpan) {
-        // Menggunakan format ID yang benar
-        nisabValueSpan.textContent = `Rp ${NISAB_BULANAN.toLocaleString('id-ID')}`;
+        nisabValueSpan.textContent = NISAB_BULANAN.toLocaleString('id-ID');
     }
 
-    // Gunakan listener 'click' pada tombol (Ini akan memastikan kalkulasi hanya terjadi saat tombol diklik, bukan setiap input)
+    // Ketika tombol diklik → hitung
     if (bayarZakatButton) {
-        // Hentikan listener 'input' lama jika ada (Ini perlu diubah logikanya agar kalkulasi hanya terjadi saat tombol di klik, bukan saat DOMContentLoaded)
-        if (penghasilanInput) {
-            // Kita akan menggunakan tombol untuk memicu hitungZakat, jadi kita tidak perlu membuang listener 'input' jika tidak ada
-        }
-        
-        // Tambahkan listener 'click' pada tombol
-        bayarZakatButton.addEventListener('click', function(e) {
-            // Hentikan perilaku default (navigasi langsung) saat tombol diklik
-            e.preventDefault();
-            
-            // Panggil fungsi hitungZakat
+        bayarZakatButton.addEventListener('click', function() {
             hitungZakat();
         });
-        
-        // Tambahkan listener 'input' ke input field untuk mengaktifkan kembali tampilan default tombol saat user mengetik
-        if (penghasilanInput) {
-            penghasilanInput.addEventListener('input', function() {
-                // Reset tampilan tombol ke default 'Hitung Zakat' saat input berubah
-                bayarZakatButton.setAttribute('href', '#kalkulator-zakat');
-                bayarZakatButton.textContent = 'Hitung Zakat Sekarang';
-                bayarZakatButton.classList.remove('btn-success');
-                bayarZakatButton.classList.add('btn-primary');
-                hasilZakatDiv.innerHTML = '<p class="text-secondary mt-3">Klik tombol untuk menghitung zakat.</p>';
-            });
-        }
     }
 
-    // Fungsi Utama Kalkulasi
+    // Format input angka saat user mengetik
+    if (penghasilanInput) {
+        penghasilanInput.addEventListener('input', function() {
+            let raw = penghasilanInput.value.replace(/\D/g, '');
+            penghasilanInput.value = raw ? parseInt(raw).toLocaleString('id-ID') : '';
+
+            // Reset tampilan
+            hasilZakatDiv.innerHTML = '<p class="text-secondary mt-3">Klik tombol untuk menghitung zakat.</p>';
+            bayarZakatButton.textContent = 'Hitung Zakat Sekarang';
+            bayarZakatButton.className = 'btn btn-primary btn-lg w-100 mt-3';
+            bayarZakatButton.removeAttribute('href');
+        });
+
+        // Support Enter key untuk submit
+        penghasilanInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                hitungZakat();
+            }
+        });
+    }
+
     function hitungZakat() {
         const rawValue = penghasilanInput.value.replace(/\D/g, '');
         const penghasilan = parseInt(rawValue) || 0;
-        
-        hasilZakatDiv.innerHTML = '';
-        
-        // Reset status tombol ke default jika input kosong/nol
+
         if (penghasilan <= 0) {
-            bayarZakatButton.setAttribute('href', '#kalkulator-zakat');
+            hasilZakatDiv.innerHTML = '<div class="alert alert-danger mt-3"><strong>Error:</strong> Masukkan penghasilan bulanan yang valid (lebih dari 0).</div>';
             bayarZakatButton.textContent = 'Hitung Zakat Sekarang';
-            bayarZakatButton.classList.remove('btn-success');
-            bayarZakatButton.classList.add('btn-primary');
-            hasilZakatDiv.innerHTML = '<p class="text-secondary mt-3">Masukkan penghasilan bulanan Anda.</p>';
+            bayarZakatButton.className = 'btn btn-primary btn-lg w-100 mt-3';
             return;
         }
 
-        let zakatWajib = 0;
-        let pesan = '';
-
+        // hitung
         if (penghasilan >= NISAB_BULANAN) {
-            zakatWajib = Math.round(penghasilan * 0.025);
-            
-            // 1. Teks Tombol diubah menjadi Lanjutkan Pembayaran
-            // 2. HREF diarahkan ke donasi-form.html dengan parameter
-            
-            // **PERBAIKAN UTAMA DI SINI:** Mengganti index.html#donasi-form menjadi donasi-form.html
-            bayarZakatButton.setAttribute('href', `donasi-form.html?nominal=${zakatWajib}&jenis=Zakat%20Penghasilan`);
-            bayarZakatButton.textContent = 'Lanjutkan Pembayaran Zakat';
-            bayarZakatButton.classList.remove('btn-primary');
-            bayarZakatButton.classList.add('btn-success');
-            
-            pesan = `
-                <div class="alert alert-success mt-3 shadow-sm">
-                    <h4 class="alert-heading">Wajib Zakat!</h4>
-                    <p>Kewajiban Zakat Penghasilan Anda bulan ini adalah:</p>
-                    <p class="display-6 fw-bold text-success">Rp ${zakatWajib.toLocaleString('id-ID')}</p>
-                </div>
-            `;
-            
-        } else {
-            pesan = `
-                <div class="alert alert-warning mt-3 shadow-sm">
-                    <p class="mb-0">Penghasilan Anda (Rp ${penghasilan.toLocaleString('id-ID')}) belum mencapai Nisab bulanan.</p>
-                    <p class="mb-0 small">Anda disarankan untuk berinfaq atau bersedekah.</p>
-                </div>
-            `;
-            
-            // Tombol diarahkan ke halaman donasi-form, tetapi tanpa nominal hasil kalkulator (karena tidak wajib)
-            bayarZakatButton.setAttribute('href', 'donasi-form.html');
-            bayarZakatButton.textContent = 'Lanjutkan ke Infaq/Sedekah';
-            bayarZakatButton.classList.remove('btn-primary');
-            bayarZakatButton.classList.add('btn-warning');
-        }
+            const zakat = Math.round(penghasilan * ZAKAT_PERCENTAGE);
 
-        hasilZakatDiv.innerHTML = pesan;
+            hasilZakatDiv.innerHTML = `
+                <div class="alert alert-success mt-3 border-success border-3">
+                    <h4 class="text-success fw-bold">✓ Wajib Zakat!</h4>
+                    <p>Zakat penghasilan Anda bulan ini:</p>
+                    <p class="display-6 fw-bold text-success">Rp ${zakat.toLocaleString('id-ID')}</p>
+                    <p class="text-muted small mb-0">Perhitungan: ${penghasilan.toLocaleString('id-ID')} × 2.5% = Rp ${zakat.toLocaleString('id-ID')}</p>
+                </div>
+            `;
+
+            bayarZakatButton.textContent = 'Lanjutkan Pembayaran Zakat';
+            bayarZakatButton.className = 'btn btn-success btn-lg w-100 mt-3';
+            bayarZakatButton.setAttribute('onclick', `window.location.href='donasi-form.html?nominal=${zakat}&jenis=Zakat%20Penghasilan'`);
+
+        } else {
+            const sisaNisab = NISAB_BULANAN - penghasilan;
+            hasilZakatDiv.innerHTML = `
+                <div class="alert alert-warning mt-3 border-warning border-3">
+                    <h4 class="text-warning fw-bold">⚠ Belum Mencapai Nisab</h4>
+                    <p><strong>Penghasilan Anda:</strong> Rp ${penghasilan.toLocaleString('id-ID')}</p>
+                    <p><strong>Nisab Bulanan:</strong> Rp ${NISAB_BULANAN.toLocaleString('id-ID')}</p>
+                    <p><strong>Kurang:</strong> Rp ${sisaNisab.toLocaleString('id-ID')}</p>
+                    <p class="text-muted small mb-0">Namun, Anda tetap didorong untuk berinfaq atau sedekah sesuai kemampuan Anda.</p>
+                </div>
+            `;
+
+            bayarZakatButton.textContent = 'Lanjutkan ke Infaq/Sedekah';
+            bayarZakatButton.className = 'btn btn-warning btn-lg w-100 mt-3';
+            bayarZakatButton.setAttribute('onclick', `window.location.href='donasi-form.html'`);
+        }
     }
-    
-    // Inisialisasi: Panggil hitungZakat saat DOMContentLoaded hanya untuk menampilkan teks default
+
+    // Default tampilan
     hasilZakatDiv.innerHTML = '<p class="text-secondary mt-3">Klik tombol untuk menghitung zakat.</p>';
 });

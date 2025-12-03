@@ -1,72 +1,1247 @@
-/* assets/css/style.css */
-
 /* 1. TIPOGRAFI MODERN */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: 'Poppins', sans-serif; 
-    background-color: #f0f2f5; /* Latar belakang lembut */
+    background: linear-gradient(180deg, #f8fafc 0%, #f0f2f5 100%);
+    padding-top: 70px; /* Jarak yang cukup untuk header sticky */
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Agar link di navbar/footer tidak terpengaruh */
+    transition: all 0.3s ease;
 }
 
 /* 2. SKEMA WARNA DAN GRADIENT */
 /* Primary: Deep Blue */
 .bg-primary, .btn-primary {
-    background: linear-gradient(135deg, #0d47a1, #1976d2) !important; 
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 50%, #2196f3 100%) !important; 
     border-color: #0d47a1 !important;
+    color: white !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(13, 71, 161, 0.4);
+}
+
 .btn-outline-primary {
-    color: #0d47a1;
-    border-color: #0d47a1;
-}
-/* Success: Green */
-.btn-success {
-    background: linear-gradient(135deg, #2e7d32, #66bb6a) !important; 
-    border: none !important;
+    color: #0d47a1 !important;
+    border-color: #0d47a1 !important;
     transition: all 0.3s ease;
 }
-.btn-success:hover {
-    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+
+.btn-outline-primary:hover {
+    background: #0d47a1;
+    color: white !important;
     transform: translateY(-2px);
 }
-/* Warning: Yellow */
+
+/* Success: Green (Untuk Zakat/Pembayaran) */
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%) !important; 
+    border: none !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-success:hover {
+    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Warning: Yellow (Untuk Infaq/Sedekah/Tombol Utama) */
 .btn-warning {
-    background: #ffb300 !important;
-    border-color: #ffb300 !important;
-    color: #333 !important;
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ea580c 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-warning:hover {
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+    transform: translateY(-3px);
+}
+
+/* 3. NAVBAR & HEADER */
+.navbar {
+    min-height: 70px; /* Memastikan header punya tinggi yang cukup */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.navbar:not(.navbar-light) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+    color: #374151 !important;
+}
+
+.nav-link:hover {
+    color: #0d47a1 !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #0d47a1 !important;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 4. SENTUHAN MODERN PADA CARD/KONTEN */
+.card, .alert, .shadow-lg {
+    border-radius: 16px; /* Sudut membulat lebih smooth */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Shadow lebih lembut */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+}
+
+.card:hover:not(.no-hover-effect) {
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* KONTEN SPESIFIK */
+/* Hero Section */
+#hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(135deg, rgba(13, 71, 161, 0.05) 0%, rgba(25, 118, 210, 0.05) 50%, rgba(33, 150, 243, 0.05) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(13, 71, 161, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+#hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+    z-index: 0;
+}
+
+.text-shadow-lg {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+}
+
+/* Kalkulator Zakat */
+#kalkulator-zakat .card {
+    padding: 2.5rem; /* Padding yang lebih baik */
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#kalkulator-zakat .card:hover {
+    border-color: #0d47a1;
+    box-shadow: 0 15px 40px rgba(13, 71, 161, 0.2);
+}
+
+#kalkulator-zakat .form-control {
+    padding: 1rem 1.2rem; /* Membuat input field lebih tinggi dan elegan */
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#kalkulator-zakat .form-control:focus {
+    border-color: #0d47a1;
+    box-shadow: 0 0 0 4px rgba(13, 71, 161, 0.1);
+    transform: scale(1.02);
+}
+
+.display-6 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0d47a1, #1976d2, #2196f3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* History Page Styling */
+#statsSection .card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+#statsSection .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+#statsSection .card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+#filtersSection {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 12px;
+    border: none;
+}
+
+#filtersSection .form-select,
+#filtersSection .form-control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+#filtersSection .form-select:focus,
+#filtersSection .form-control:focus {
+    border-color: #0d47a1;
+    box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, 0.25);
+}
+
+/* Card Grid Styling */
+.hover-card {
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e0e0e0;
+}
+
+.hover-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15) !important;
+    border-color: #0d47a1;
+}
+
+.hover-card .card-header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hover-card .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.hover-card .btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.hover-card .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== HERO SECTION STYLING ===== */
+.hero-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-animation {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-image-container {
+    position: relative;
+    animation: slideInRight 0.8s ease-out;
+}
+
+.hero-image {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+}
+
+/* Mobile responsiveness untuk hero */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+    
+    .hero-image-container {
+        margin-bottom: 2rem;
+    }
+    
+    .hero-bg-animation {
+        display: none;
+    }
+}
+
+/* ===== FEATURE CARD STYLING ===== */
+.feature-card {
+    background: #ffffff;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.feature-card:hover {
+    border-bottom-color: #1976d2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(25, 118, 210, 0.1) 0%, rgba(25, 118, 210, 0.05) 100%);
+}
+
+/* ===== CALCULATOR CARD STYLING ===== */
+.calculator-card {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-card .input-group-text {
+    font-weight: 600;
+    color: #1976d2;
+    border-right: none;
+}
+
+.calculator-card .form-control {
+    font-size: 1.1rem;
+    border-left: none;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.calculator-card .form-control:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.15);
+}
+
+.min-height-200 {
+    min-height: 200px;
+}
+
+.calculator-card .alert {
+    border-radius: 12px;
+    border: none;
+}
+
+/* ===== PROGRAM CARD STYLING ===== */
+.program-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.program-header {
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.program-card:hover .program-header {
+    border-bottom-color: #1976d2;
+}
+
+.program-card .card-body {
+    padding: 1.5rem;
+}
+
+/* ===== HOVER LIFT EFFECT ===== */
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== SPACING UTILITIES ===== */
+.py-md-7 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.mb-md-7 {
+    margin-bottom: 5rem;
+}
+
+/* ===== BADGE STYLING ===== */
+.badge {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* ===== BUTTONS ENHANCED ===== */
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary, .btn-success {
     font-weight: 600;
 }
 
-/* 3. SENTUHAN MODERN PADA CARD/KONTEN (DITINGKATKAN) */
-.card, .calculator-box, .alert-success {
-    border-radius: 20px; /* Sudut lebih membulat (sedikit lebih besar) */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Shadow lebih menonjol dan lembut */
-    border: none;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-.card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2); /* Efek hover yang lebih dramatis */
+.btn:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* PENTING: MENAMBAH PADDING PADA BOX KALKULATOR */
-.calculator-box {
-    background: #ffffff;
-    padding: 50px; /* Ditingkatkan dari 40px ke 50px */
+/* ===== Z-INDEX UTILITIES ===== */
+.z-2 {
+    position: relative;
+    z-index: 2;
 }
 
-/* PENTING: MENAMBAH PADDING PADA CARD DONASI */
-/* Bootstrap class 'p-4' sudah ada, tapi kita bisa memastikan jarak isinya luas */
+/* Formulir Donasi */
 #donasi-form .card {
-    padding: 3rem !important; /* Ditingkatkan, memastikan ruang bernapas */
+    padding: 3rem !important; /* Memastikan ruang bernapas pada form */
+}
+#donasi-form .form-control, #donasi-form .form-select {
+    border-radius: 10px;
 }
 
-
-/* GAYA KHUSUS KALKULATOR INPUT */
-#kalkulator-zakat .form-control {
-    padding: 1.5rem 1rem; /* Membuat input field lebih tinggi dan elegan */
+/* Footer */
+.bg-dark {
+    background-color: #1a1a1a !important; /* Warna dark yang lebih pekat */
+}
+.footer a {
+    color: #adb5bd;
+    transition: color 0.3s;
+    display: block;
+    margin-bottom: 5px;
+}
+.footer a:hover {
+    color: #ffffff;
 }
 
-/* PENGATURAN TEKS HERO */
-.text-shadow-lg {
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+/* ===== ABOUT PAGE STYLING ===== */
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+/* Vision & Mission Cards */
+.vision-mission-card {
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+.vision-mission-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.vision-mission-card .icon-box {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.vision-mission-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Core Values Cards */
+.core-value-card {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.core-value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.value-header {
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.core-value-card:hover .value-header {
+    border-bottom-color: #1976d2;
+}
+
+/* Statistics Section */
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.stat-card:hover {
+    border-color: #1976d2;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    transition: color 0.3s ease;
+}
+
+.stat-card:hover h3 {
+    color: #0d47a1 !important;
+}
+
+/* Icon Circle for Why Choose Us */
+.icon-circle {
+    transition: all 0.3s ease;
+}
+
+.icon-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vision-mission-card,
+    .core-value-card {
+        margin-bottom: 1rem;
+    }
+
+    .stat-card h3 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* Animation for statistics */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-stat {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* ===== PROGRAMS PAGE STYLES ===== */
+
+/* Program Card Styles */
+.program-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.program-card-header {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+}
+
+.program-card-header img {
+    transition: transform 0.4s ease;
+}
+
+.program-card:hover .program-card-header img {
+    transform: scale(1.08);
+}
+
+.program-icon-circle {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.program-card:hover .program-icon-circle {
+    bottom: 10px;
+    transform: scale(1.1);
+}
+
+.program-benefits {
+    border-left: 3px solid #e5e7eb;
+    padding-left: 12px;
+}
+
+.program-benefits .fa-check {
+    font-size: 0.75rem;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background-color: transparent;
+}
+
+.breadcrumb-item a {
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-item a:hover {
+    color: #0b5ed7;
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}
+
+/* Stat Card Styles */
+.stat-card {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-number {
+    transform: scale(1.05);
+}
+
+    .stat-label {
+        font-size: 0.95rem;
+        color: #6c757d;
+        font-weight: 600;
+    }
+
+    /* ===== DONATION FORM STYLES ===== */
+
+    /* Donation Type Cards */
+    .donation-type-card {
+        padding: 1.5rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: #ffffff;
+        position: relative;
+    }
+
+    .donation-type-card:hover {
+        border-color: #10b981;
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .donation-type-card.selected {
+        border-color: #10b981;
+        background: linear-gradient(135deg, #f0fdf4 0%, #e0f7ef 100%);
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+    }
+
+    .donation-type-card.selected::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.75rem;
+    }
+
+    .donation-type-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .donation-type-card h6 {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        color: #1f2937;
+    }
+
+    /* Form Input Styling */
+    .form-control, .form-select {
+        border-radius: 8px;
+        font-size: 0.95rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #10b981;
+        box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.25);
+    }
+
+    .input-group-text {
+        border-radius: 8px 0 0 8px !important;
+        font-size: 0.95rem;
+    }
+
+    /* Info Cards */
+    .info-card {
+        transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.1);
+    }
+
+    /* Success Message Styling */
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    /* Progress Bar */
+    .progress {
+        background-color: #e5e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        transition: width 0.3s ease;
+    }
+
+    .step-number {
+        transition: all 0.3s ease;
+    }
+
+    .step-number.active {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .donation-type-card {
+            padding: 1rem;
+        }
+
+        .donation-type-icon {
+            font-size: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1rem !important;
+        }
+
+        .progress {
+            height: 3px;
+        }
+    }
+
+    /* ===== CALCULATOR PAGE STYLES ===== */
+
+    /* Nisab Info Cards */
+    .nisab-card {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nisab-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .nisab-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+        pointer-events: none;
+    }
+
+    /* Calculator Input Styling */
+    .form-control, .form-select {
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    }
+
+    .input-group-text {
+        border-radius: 8px 0 0 8px !important;
+        font-size: 0.95rem;
+    }
+
+    /* Info Boxes */
+    .info-box {
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .info-box:hover {
+        background: #f3f4f6;
+        transform: translateY(-2px);
+    }
+
+    .info-box i {
+        transition: transform 0.3s ease;
+    }
+
+    .info-box:hover i {
+        transform: scale(1.2);
+    }
+
+    /* Result Alert Styling */
+    .alert {
+        border-radius: 12px;
+        animation: slideInUp 0.4s ease-out;
+    }
+
+    /* Calculator Card */
+    .card {
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+        .nisab-card {
+            padding: 1rem !important;
+        }
+
+        .nisab-card h5 {
+            font-size: 1.1rem !important;
+        }
+
+        .info-box {
+            padding: 1rem !important;
+        }
+
+        .info-box h6 {
+            font-size: 0.9rem;
+        }
+
+        .info-box small {
+            font-size: 0.75rem;
+        }
+    }/* Responsive adjustments */
+@media (max-width: 992px) {
+    .program-icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .program-card-header {
+        height: 140px;
+    }
+    
+    .program-icon-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        right: 15px;
+        bottom: -15px;
+    }
+    
+    .program-card:hover .program-icon-circle {
+        bottom: 5px;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+}
+
+/* ===== MODERN ANIMATIONS ===== */
+
+/* Enhanced keyframe animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(13, 71, 161, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(13, 71, 161, 0.8);
+    }
+}
+
+@keyframes rotate360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Apply animations to common elements */
+.animate-on-scroll {
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+}
+
+/* Button ripple effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Hover glow effect for cards */
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(13, 71, 161, 0.3);
+}
+
+/* Text gradient animation */
+.text-gradient {
+    background: linear-gradient(135deg, #0d47a1, #1976d2, #2196f3, #1976d2, #0d47a1);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Smooth page transitions */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Stagger animations for lists */
+.stagger-item {
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Icon animations */
+.icon-bounce {
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+.icon-spin {
+    animation: rotate360 2s linear infinite;
+}
+
+.icon-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Loading skeleton animation */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, select, textarea {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Focus visible state for accessibility */
+*:focus-visible {
+    outline: 2px solid #0d47a1;
+    outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    color: white;
+}
+
+::-moz-selection {
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    color: white;
 }
